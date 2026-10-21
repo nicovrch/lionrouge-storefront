@@ -139,6 +139,19 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'lionrouge_description_car
 
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 
+function lionrouge_prix_a_partir_de( $prix, $produit ) {
+	return '<span class="lr-price__from">À partir de</span> ' . wc_price( $produit->get_variation_price( 'min' ) );
+}
+add_filter( 'woocommerce_variable_price_html', 'lionrouge_prix_a_partir_de', 10, 2 );
+
+function lionrouge_texte_bouton( $texte, $produit ) {
+	if ( $produit->is_type( 'variable' ) ) {
+		return 'Personnaliser';
+	}
+	return $texte;
+}
+add_filter( 'woocommerce_product_add_to_cart_text', 'lionrouge_texte_bouton', 10, 2 );
+
 function lionrouge_produits_par_page() {
 	return 24;
 }
