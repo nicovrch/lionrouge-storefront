@@ -1,5 +1,8 @@
 <?php
 
+/* ===== Général ===== */
+
+// Chargement du style du thème parent Storefront (IT-1).
 function lionrouge_enqueue_styles() {
 	wp_enqueue_style(
 		'storefront-parent-style',
@@ -8,19 +11,14 @@ function lionrouge_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'lionrouge_enqueue_styles' );
 
+// Retire la police Google de Storefront : le thème utilise les polices du Design System (IT-2).
 function lionrouge_retirer_polices_storefront() {
 	wp_dequeue_style( 'storefront-fonts' );
 }
 add_action( 'wp_enqueue_scripts', 'lionrouge_retirer_polices_storefront', 20 );
 
-function lionrouge_menu_la_carte( $classes, $item ) {
-	if ( ( is_product_category() || is_product() ) && $item->object_id == wc_get_page_id( 'shop' ) ) {
-		$classes[] = 'current-menu-item';
-	}
-	return $classes;
-}
-add_filter( 'nav_menu_css_class', 'lionrouge_menu_la_carte', 10, 2 );
-
+// Retire des éléments de Storefront et WooCommerce absents de la maquette (IT-2).
+// Lancé sur le hook « wp » : le functions.php du thème enfant est lu avant celui de Storefront.
 function lionrouge_retirer_hooks() {
 	remove_action( 'storefront_header', 'storefront_site_branding', 20 );
 	remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
@@ -46,10 +44,22 @@ function lionrouge_retirer_hooks() {
 }
 add_action( 'wp', 'lionrouge_retirer_hooks' );
 
+/* ===== En-tête et pied de page ===== */
+
+// Garde « La carte » actif dans le menu sur les pages de catégorie et de produit (IT-2).
+function lionrouge_menu_la_carte( $classes, $item ) {
+	if ( ( is_product_category() || is_product() ) && $item->object_id == wc_get_page_id( 'shop' ) ) {
+		$classes[] = 'current-menu-item';
+	}
+	return $classes;
+}
+add_filter( 'nav_menu_css_class', 'lionrouge_menu_la_carte', 10, 2 );
+
+// En-tête : logo du restaurant à la place du titre du site (IT-2).
 function lionrouge_logo() {
 	?>
 	<div class="site-branding">
-		<a class="lr-header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+		<a class="lr-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 			<img src="<?php echo esc_url( get_theme_file_uri( 'img/logo-header-lion-rouge.svg' ) ); ?>" alt="Le Lion Rouge, accueil" width="40" height="40">
 		</a>
 	</div>
@@ -57,9 +67,10 @@ function lionrouge_logo() {
 }
 add_action( 'storefront_header', 'lionrouge_logo', 20 );
 
+// En-tête : icône « Mon compte » (IT-2).
 function lionrouge_lien_compte() {
 	?>
-	<a class="lr-header__account" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>">
+	<a class="lr-compte" href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>">
 		<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
 			<circle cx="12" cy="8" r="4" />
 			<path d="M4.5 20.5c1.2-3.8 4-5.8 7.5-5.8s6.3 2 7.5 5.8" />
@@ -70,46 +81,52 @@ function lionrouge_lien_compte() {
 }
 add_action( 'storefront_header', 'lionrouge_lien_compte', 55 );
 
+// Pied de page de la maquette (IT-2).
 function lionrouge_pied_de_page() {
 	?>
-	<div class="lr-footer__inner">
-		<div>
-			<img class="lr-footer__logo" src="<?php echo esc_url( get_theme_file_uri( 'img/logo-footer-lion-rouge.svg' ) ); ?>" alt="Le Lion Rouge, Angoulême" width="140" height="140">
-			<p>Restaurant italien à Angoulême. Commandez en ligne, retirez au comptoir.</p>
+	<div class="lr-footer">
+		<div class="lr-footer__inner">
+			<div>
+				<img class="lr-footer__logo" src="<?php echo esc_url( get_theme_file_uri( 'img/logo-footer-lion-rouge.svg' ) ); ?>" alt="Le Lion Rouge, Angoulême" width="140" height="140">
+				<p>Restaurant italien à Angoulême. Commandez en ligne, retirez au comptoir.</p>
+			</div>
+			<div>
+				<h2 class="lr-footer__title">Adresse</h2>
+				<address>3 place Francis Louvel<br>16000 Angoulême<br><a href="tel:+33545200835">05 45 20 08 35</a></address>
+			</div>
+			<div>
+				<h2 class="lr-footer__title">Horaires</h2>
+				<dl class="lr-hours">
+					<dt>Mardi au jeudi</dt>
+					<dd>12 h à 14 h et 19 h 30 à 22 h 30</dd>
+					<dt>Vendredi et samedi</dt>
+					<dd>12 h à 14 h et 19 h 30 à 23 h</dd>
+					<dt>Dimanche et lundi</dt>
+					<dd>Fermé</dd>
+				</dl>
+			</div>
+			<nav aria-label="Informations">
+				<h2 class="lr-footer__title">Informations</h2>
+				<ul class="lr-footer__links">
+					<li><a href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">Mentions légales</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/conditions-generales-de-vente/' ) ); ?>">Conditions générales de vente</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">Confidentialité</a></li>
+					<li><a href="https://www.instagram.com/lionrougerestaurant/">Instagram</a></li>
+				</ul>
+			</nav>
 		</div>
-		<div>
-			<h2 class="lr-footer__title">Adresse</h2>
-			<address>3 place Francis Louvel<br>16000 Angoulême<br><a href="tel:+33545200835">05 45 20 08 35</a></address>
+		<div class="lr-footer__bottom">
+			<p>© 2026 Le Lion Rouge</p>
+			<p>Paiement au retrait · Retrait gratuit</p>
 		</div>
-		<div>
-			<h2 class="lr-footer__title">Horaires</h2>
-			<dl class="lr-hours">
-				<dt>Mardi au jeudi</dt>
-				<dd>12 h à 14 h et 19 h 30 à 22 h 30</dd>
-				<dt>Vendredi et samedi</dt>
-				<dd>12 h à 14 h et 19 h 30 à 23 h</dd>
-				<dt>Dimanche et lundi</dt>
-				<dd>Fermé</dd>
-			</dl>
-		</div>
-		<nav aria-label="Informations">
-			<h2 class="lr-footer__title">Informations</h2>
-			<ul class="lr-footer__links">
-				<li><a href="<?php echo esc_url( home_url( '/mentions-legales/' ) ); ?>">Mentions légales</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/conditions-generales-de-vente/' ) ); ?>">Conditions générales de vente</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/politique-de-confidentialite/' ) ); ?>">Confidentialité</a></li>
-				<li><a href="https://www.instagram.com/lionrougerestaurant/">Instagram</a></li>
-			</ul>
-		</nav>
-	</div>
-	<div class="lr-footer__bottom">
-		<p>© 2026 Le Lion Rouge</p>
-		<p>Paiement au retrait · Retrait gratuit</p>
 	</div>
 	<?php
 }
 add_action( 'storefront_footer', 'lionrouge_pied_de_page', 10 );
 
+/* ===== La carte (grille de produits) ===== */
+
+// Onglets des catégories au-dessus de la grille de produits (IT-2).
 function lionrouge_onglets_categories() {
 	$categories = get_terms( array(
 		'taxonomy'   => 'product_cat',
@@ -119,31 +136,36 @@ function lionrouge_onglets_categories() {
 	?>
 	<nav class="lr-tabs" aria-label="Catégories de la carte">
 		<ul class="lr-tabs__list">
-			<?php foreach ( $categories as $categorie ) : ?>
-				<li>
-					<a class="lr-tabs__link" href="<?php echo esc_url( get_term_link( $categorie ) ); ?>"<?php if ( is_product_category( $categorie->slug ) ) { echo ' aria-current="page"'; } ?>><?php echo esc_html( $categorie->name ); ?></a>
-				</li>
-			<?php endforeach; ?>
+			<?php
+			foreach ( $categories as $categorie ) {
+				$actif = '';
+				if ( is_product_category( $categorie->slug ) ) {
+					$actif = ' aria-current="page"';
+				}
+				echo '<li><a class="lr-tabs__link" href="' . esc_url( get_term_link( $categorie ) ) . '"' . $actif . '>' . esc_html( $categorie->name ) . '</a></li>';
+			}
+			?>
 		</ul>
 	</nav>
 	<?php
 }
 add_action( 'woocommerce_before_shop_loop', 'lionrouge_onglets_categories', 5 );
 
+// Grille de produits : description courte sous le nom (IT-2).
 function lionrouge_description_carte() {
-	echo '<div class="lr-card__desc">';
+	echo '<div class="lr-description">';
 	the_excerpt();
 	echo '</div>';
 }
 add_action( 'woocommerce_after_shop_loop_item_title', 'lionrouge_description_carte', 7 );
 
-add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
-
-function lionrouge_prix_a_partir_de( $prix, $produit ) {
-	return '<span class="lr-price__from">À partir de</span> ' . wc_price( $produit->get_variation_price( 'min' ) );
+// Toute la carte sur une seule page (IT-2).
+function lionrouge_produits_par_page() {
+	return 24;
 }
-add_filter( 'woocommerce_variable_price_html', 'lionrouge_prix_a_partir_de', 10, 2 );
+add_filter( 'loop_shop_per_page', 'lionrouge_produits_par_page', 20 );
 
+// Produits variables : bouton « Personnaliser » dans la grille (IT-3).
 function lionrouge_texte_bouton( $texte, $produit ) {
 	if ( $produit->is_type( 'variable' ) ) {
 		return 'Personnaliser';
@@ -152,7 +174,13 @@ function lionrouge_texte_bouton( $texte, $produit ) {
 }
 add_filter( 'woocommerce_product_add_to_cart_text', 'lionrouge_texte_bouton', 10, 2 );
 
-function lionrouge_produits_par_page() {
-	return 24;
+// Produits variables : « À partir de » + prix le plus bas (IT-3).
+function lionrouge_prix_a_partir_de( $prix, $produit ) {
+	return '<span class="lr-price-from">À partir de</span> ' . wc_price( $produit->get_variation_price( 'min' ) );
 }
-add_filter( 'loop_shop_per_page', 'lionrouge_produits_par_page', 20 );
+add_filter( 'woocommerce_variable_price_html', 'lionrouge_prix_a_partir_de', 10, 2 );
+
+/* ===== Fiche produit ===== */
+
+// Fiche produit : prix déplacé après la description (IT-2), donc après les allergènes (IT-4).
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
