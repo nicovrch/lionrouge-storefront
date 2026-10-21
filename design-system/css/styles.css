@@ -1,6 +1,0 @@
-/* Étape 2 · Feuille principale du Design System : importe les 3 fichiers.
-   L'ordre des couches @layer est écrit au début de tokens.css. */
-
-@import url("tokens.css");
-@import url("components.css");
-@import url("ds.css");
