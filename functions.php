@@ -214,3 +214,17 @@ function lionrouge_instructions_retrait() {
 	}
 }
 add_action( 'woocommerce_review_order_before_payment', 'lionrouge_instructions_retrait' );
+
+// Instructions pour le retrait dans les e-mails des commandes à retirer en boutique (IT-8).
+function lionrouge_instructions_email( $commande, $pour_admin, $texte_brut ) {
+	$instructions = get_field( 'instructions_retrait', 'option' );
+	if ( ! $instructions || ! $commande->has_shipping_method( 'local_pickup' ) ) {
+		return;
+	}
+	if ( $texte_brut ) {
+		echo "\nINSTRUCTIONS POUR LE RETRAIT\n" . wp_strip_all_tags( $instructions ) . "\n\n";
+	} else {
+		echo '<h2>Instructions pour le retrait</h2><p>' . wp_kses_post( $instructions ) . '</p>';
+	}
+}
+add_action( 'woocommerce_email_after_order_table', 'lionrouge_instructions_email', 10, 3 );
