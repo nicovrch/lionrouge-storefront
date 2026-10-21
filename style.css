@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.10.0
+Version: 0.11.0
 Text Domain: lionrouge
 */
 
@@ -1755,6 +1755,153 @@ ul.products li.product .added_to_cart {
   font-size: var(--lr-fs-small);
 }
 
+/* ===== Équipe (IT-11) ===== */
+.single-membre .storefront-breadcrumb,
+.single-membre .lr-equipe .site-main > .woocommerce-breadcrumb {
+  display: none;
+}
+
+.single-membre .lr-equipe .site-main > .woocommerce-breadcrumb:first-child {
+  display: block;
+  margin: 0 0 var(--lr-space-24);
+  padding-top: var(--lr-space-24);
+}
+
+.lr-equipe__titre {
+  margin: 0 0 var(--lr-space-16);
+  font-size: var(--lr-fs-display);
+}
+
+.lr-equipe__intro {
+  max-width: var(--lr-container-narrow);
+  margin: 0 0 var(--lr-space-32);
+  color: var(--lr-color-text-muted);
+  font-size: var(--lr-fs-lead);
+}
+
+.lr-equipe__liste {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--lr-space-24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lr-membre__lien {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0 var(--lr-space-16);
+  color: var(--lr-color-text);
+  text-decoration: none;
+}
+
+.lr-membre__portrait {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-row: 1 / span 2;
+  width: 6rem;
+  height: 6rem;
+  border-radius: var(--lr-radius-full);
+  background-color: var(--lr-black);
+  color: var(--lr-gold-200);
+  font-family: var(--lr-font-display);
+  font-size: 2rem;
+  letter-spacing: var(--lr-ls-display);
+  line-height: 1;
+  text-indent: 0.12em;
+  transition: background-image var(--lr-duration-base) var(--lr-ease);
+}
+
+.lr-membre__lien:hover .lr-membre__portrait {
+  background-image: var(--lr-gradient-gold);
+  color: var(--lr-black);
+}
+
+.lr-membre__nom {
+  align-self: end;
+  color: var(--lr-color-heading);
+  font-family: var(--lr-font-display);
+  font-size: var(--lr-fs-h3);
+  letter-spacing: 0.06em;
+  line-height: var(--lr-lh-heading);
+  text-transform: uppercase;
+}
+
+.lr-membre__lien:hover .lr-membre__nom {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.lr-membre__poste {
+  align-self: start;
+  margin: 0;
+  color: var(--lr-color-text-muted);
+  font-size: var(--lr-fs-small);
+}
+
+.lr-membre--fiche {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: start;
+  gap: var(--lr-space-24);
+  margin-top: var(--lr-space-24);
+}
+
+.lr-membre--fiche .lr-membre__portrait {
+  grid-row: auto;
+  width: 8rem;
+  height: 8rem;
+  font-size: 2.75rem;
+}
+
+.lr-membre--fiche h1.lr-membre__nom {
+  margin: 0 0 var(--lr-space-4);
+  font-size: var(--lr-fs-h1);
+  letter-spacing: var(--lr-ls-display);
+}
+
+.lr-membre--fiche .lr-membre__poste {
+  margin-bottom: var(--lr-space-24);
+  color: var(--lr-color-accent);
+  font-family: var(--lr-font-label);
+  font-size: var(--lr-fs-body);
+  font-weight: var(--lr-fw-semibold);
+  letter-spacing: var(--lr-ls-label);
+  text-transform: uppercase;
+}
+
+.lr-membre__texte {
+  max-width: var(--lr-container-narrow);
+  margin-bottom: var(--lr-space-32);
+  font-size: var(--lr-fs-lead);
+}
+
+.lr-membre--fiche a.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--lr-size-target);
+  padding: var(--lr-space-8) var(--lr-space-24);
+  border: var(--lr-border-hairline) solid var(--lr-color-heading);
+  background-color: transparent;
+  color: var(--lr-color-heading);
+  font-family: var(--lr-font-display);
+  letter-spacing: var(--lr-ls-display);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.lr-membre--fiche a.button:hover {
+  background-color: var(--lr-color-heading);
+  color: var(--lr-cream);
+}
+
+.lr-membre__texte p {
+  margin: 0 0 var(--lr-space-16);
+}
+
 /* ===== Pied de page (IT-2) ===== */
 .site-footer {
   padding: 0;
@@ -2074,6 +2221,45 @@ ul.products li.product .added_to_cart {
 
   .woocommerce-account .woocommerce-MyAccount-navigation ul {
     gap: 0 var(--lr-space-24);
+  }
+
+  /* Équipe (IT-11) */
+  .lr-equipe__liste {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--lr-space-48) var(--lr-space-32);
+  }
+
+  .lr-membre__lien {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: var(--lr-space-4);
+    text-align: center;
+  }
+
+  .lr-membre__portrait {
+    grid-row: auto;
+    width: 7.5rem;
+    height: 7.5rem;
+    margin-bottom: var(--lr-space-12);
+    font-size: 2.5rem;
+  }
+
+  .lr-membre__nom,
+  .lr-membre__poste {
+    align-self: auto;
+  }
+
+  .lr-membre--fiche {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    gap: var(--lr-space-48);
+    align-items: start;
+  }
+
+  .lr-membre--fiche .lr-membre__portrait {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 0;
+    font-size: 3.25rem;
   }
 
   /* Pied de page */
