@@ -199,6 +199,12 @@ add_action( 'woocommerce_after_shop_loop_item_title', 'lionrouge_infos_plat', 8 
 // Fiche produit : prix déplacé après la description (IT-2), donc après les allergènes (IT-4).
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
 
+// Avis clients sous la fiche produit (IT-14).
+function lionrouge_avis() {
+	comments_template();
+}
+add_action( 'woocommerce_after_single_product_summary', 'lionrouge_avis', 25 );
+
 // Titre des suggestions sur la fiche produit et dans le panier (IT-13).
 function lionrouge_titre_suggestions() {
 	return 'Avec ça ?';

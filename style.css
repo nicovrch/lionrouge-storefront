@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.13.0
+Version: 0.14.0
 Text Domain: lionrouge
 */
 
@@ -1176,6 +1176,157 @@ ul.products li.product .added_to_cart {
   color: var(--lr-color-danger);
 }
 
+/* ===== Avis clients (IT-14) ===== */
+.single-product div.product .up-sells,
+.single-product div.product .woocommerce-tabs,
+.single-product div.product #reviews,
+.single-product div.product .related {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: var(--lr-space-24) 0 0;
+}
+
+.woocommerce .star-rating {
+  color: var(--lr-grey-300);
+}
+
+.woocommerce .star-rating span::before,
+.single-product p.stars a::before,
+.single-product p.stars a:hover ~ a::before {
+  color: var(--lr-gold-500);
+}
+
+ul.products li.product .star-rating {
+  margin: var(--lr-space-4) var(--lr-space-16) 0;
+}
+
+.single-product p.stars a::before {
+  color: var(--lr-gold-500);
+}
+
+.single-product #review_form,
+.single-product #review_form #respond {
+  padding: 0;
+  background: none;
+}
+
+.single-product #reviews #comments,
+.single-product #reviews #review_form_wrapper {
+  float: none;
+  width: 100%;
+}
+
+.single-product #reviews #comments ol.commentlist li .comment-text {
+  margin: 0;
+}
+
+.single-product .woocommerce-tabs ul.tabs {
+  display: none;
+}
+
+.single-product .woocommerce-tabs .panel {
+  margin: 0;
+}
+
+#reviews h2.woocommerce-Reviews-title {
+  font-size: var(--lr-fs-h2);
+}
+
+#reviews ol.commentlist {
+  margin: 0 0 var(--lr-space-32);
+  padding: 0;
+  list-style: none;
+}
+
+#reviews ol.commentlist li {
+  margin: 0 0 var(--lr-space-16);
+  padding: var(--lr-space-16);
+  border: var(--lr-border-hairline) solid var(--lr-color-divider);
+  background-color: var(--lr-color-bg-raised);
+}
+
+#reviews ol.commentlist li .comment_container {
+  display: block;
+}
+
+#reviews ol.commentlist li img.avatar {
+  display: none;
+}
+
+#reviews ol.commentlist li .comment-text {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#reviews .star-rating {
+  color: var(--lr-gold-500);
+}
+
+#reviews ol.commentlist li .star-rating {
+  float: none;
+  margin-bottom: var(--lr-space-8);
+}
+
+#reviews .comment-text p {
+  margin: 0 0 var(--lr-space-8);
+}
+
+#reviews .woocommerce-review__author {
+  color: var(--lr-color-heading);
+  font-weight: var(--lr-fw-semibold);
+}
+
+#reviews .woocommerce-review__verified,
+#reviews .woocommerce-review__published-date {
+  color: var(--lr-color-text-muted);
+  font-size: var(--lr-fs-small);
+}
+
+#reviews #review_form_wrapper {
+  padding: var(--lr-space-24);
+  border: var(--lr-border-hairline) solid var(--lr-color-hairline);
+  background-color: var(--lr-color-bg-raised);
+}
+
+#reviews #reply-title {
+  display: block;
+  margin-bottom: var(--lr-space-16);
+  font-family: var(--lr-font-display);
+  font-size: var(--lr-fs-h3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+#reviews p.stars a {
+  color: var(--lr-gold-500);
+}
+
+#reviews .comment-form-rating label,
+#reviews .comment-form-comment label {
+  color: var(--lr-color-heading);
+  font-size: var(--lr-fs-small);
+  font-weight: var(--lr-fw-semibold);
+}
+
+#reviews p.woocommerce-noreviews {
+  margin: 0 0 var(--lr-space-24);
+  padding: var(--lr-space-12) var(--lr-space-16) var(--lr-space-12) var(--lr-space-48);
+  border: var(--lr-border-hairline) solid var(--lr-color-divider);
+  border-left: var(--lr-border-status) solid var(--lr-color-accent);
+  background-color: var(--lr-color-bg-raised);
+  color: var(--lr-color-text);
+}
+
+#reviews p.woocommerce-noreviews::before {
+  color: var(--lr-color-accent);
+}
+
+#reviews p.woocommerce-verification-required {
+  margin: 0;
+  color: var(--lr-color-text-muted);
+}
+
 /* ===== Avec ça ? (IT-13) ===== */
 .cross-sells > h2,
 .up-sells > h2,
@@ -2199,6 +2350,14 @@ ul.products li.product .added_to_cart {
     padding-left: var(--lr-space-32);
     padding-right: var(--lr-space-32);
     font-size: var(--lr-fs-lead);
+  }
+
+  /* Avis clients (IT-14) */
+  .single-product #reviews {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--lr-space-48);
+    align-items: start;
   }
 
   /* Avec ça ? (IT-13) */
