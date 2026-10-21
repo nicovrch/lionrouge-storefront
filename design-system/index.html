@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design System · Le Lion Rouge Click &amp; Collect</title>
+  <meta name="description"
+    content="Fondations et composants du futur site de click &amp; collect du restaurant Le Lion Rouge à Angoulême : couleurs, typographies, boutons, cartes produit, formulaires et tunnel de commande.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20gradientUnits='userSpaceOnUse'%20x1='36'%20y1='0'%20x2='476'%20y2='0'%3E%3Cstop%20offset='0'%20stop-color='%23C39C51'/%3E%3Cstop%20offset='0.5'%20stop-color='%23F0CD7D'/%3E%3Cstop%20offset='1'%20stop-color='%23C39C51'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='512'%20height='512'%20rx='64'%20fill='%23000'/%3E%3Cg%20fill='url(%23g)'%20transform='translate(51.2%2051.2)%20scale(0.8)'%3E%3Cpolygon%20points='417,139.9%2095,139.9%2081.8,139.9%2081.8,155%2081.8,170.1%2088.4,170.1%20240.9,170.1%20240.9,477.9%20240.9,493%20256,493%20271.1,493%20271.1,485.4%20271.1,170.1%20423.6,170.1%20430.2,170.1%20430.2,155%20430.2,139.9'/%3E%3Cpolygon%20points='240.9,19%20240.9,79.4%20160.8,79.4%20160.8,49.2%20130.6,49.2%20130.6,79.4%20130.6,94.5%20130.6,108.7%20130.6,109.7%20135.4,109.7%20240.9,109.7%20271.1,109.7%20351.2,109.7%20376.6,109.7%20381.4,109.7%20381.4,94.5%20381.4,79.4%20381.4,50.2%20351.2,50.2%20351.2,79.4%20271.1,79.4%20271.1,19'/%3E%3Cpath%20d='M195.6,200.3h-15.1H93.4c-31.5,0-56.9,25.5-56.9,56.9c0,31.5,26.1,56.9,56.9,56.9s55.1-23.7,56.8-53.5h-30.3c-1.7,13.1-12.3,23.3-26.5,23.3s-26.7-12-26.7-26.7c0-14.8,12-26.7,26.7-26.7h50.3h36.8v212.3l30.2,16.7V230.5v-15.1v-15.1H195.6z'/%3E%3Cpath%20d='M331.5,200.3h-15.1h-15.1v30.2v229.1l30.2-16.7V230.5h36.8h50.3c14.8,0,26.7,12,26.7,26.7c0,14.8-12.5,26.7-26.7,26.7s-24.8-10.2-26.5-23.3h-30.3c1.8,29.8,26,53.5,56.8,53.5c30.9,0,56.9-25.5,56.9-56.9c0-31.5-25.5-56.9-56.9-56.9L331.5,200.3L331.5,200.3z'/%3E%3C/g%3E%3C/svg%3E"
+    type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/ds.js" defer></script>
+</head>
+
+<body>
+  <a class="lr-skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- Sprite : dégradé, pictogramme redessiné depuis les tracés du site, icônes 24 px -->
+  <svg class="lr-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="lr-grad-picto" gradientUnits="userSpaceOnUse" x1="36" y1="0" x2="476" y2="0">
+        <stop offset="0" stop-color="#C39C51" />
+        <stop offset="0.5" stop-color="#F0CD7D" />
+        <stop offset="1" stop-color="#C39C51" />
+      </linearGradient>
+    </defs>
+    <symbol id="lr-picto" viewBox="0 0 512 512">
+      <polygon
+        points="417,139.9 95,139.9 81.8,139.9 81.8,155 81.8,170.1 88.4,170.1 240.9,170.1 240.9,477.9 240.9,493 256,493 271.1,493 271.1,485.4 271.1,170.1 423.6,170.1 430.2,170.1 430.2,155 430.2,139.9" />
+      <polygon
+        points="240.9,19 240.9,79.4 160.8,79.4 160.8,49.2 130.6,49.2 130.6,79.4 130.6,94.5 130.6,108.7 130.6,109.7 135.4,109.7 240.9,109.7 271.1,109.7 351.2,109.7 376.6,109.7 381.4,109.7 381.4,94.5 381.4,79.4 381.4,50.2 351.2,50.2 351.2,79.4 271.1,79.4 271.1,19" />
+      <path
+        d="M195.6,200.3h-15.1H93.4c-31.5,0-56.9,25.5-56.9,56.9c0,31.5,26.1,56.9,56.9,56.9s55.1-23.7,56.8-53.5h-30.3c-1.7,13.1-12.3,23.3-26.5,23.3s-26.7-12-26.7-26.7c0-14.8,12-26.7,26.7-26.7h50.3h36.8v212.3l30.2,16.7V230.5v-15.1v-15.1H195.6z" />
+      <path
+        d="M331.5,200.3h-15.1h-15.1v30.2v229.1l30.2-16.7V230.5h36.8h50.3c14.8,0,26.7,12,26.7,26.7c0,14.8-12.5,26.7-26.7,26.7s-24.8-10.2-26.5-23.3h-30.3c1.8,29.8,26,53.5,56.8,53.5c30.9,0,56.9-25.5,56.9-56.9c0-31.5-25.5-56.9-56.9-56.9L331.5,200.3L331.5,200.3z" />
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24">
+      <path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8z" />
+      <path d="M9 10V6.5a3 3 0 0 1 6 0V10" />
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4.5 20.5c1.2-3.8 4-5.8 7.5-5.8s6.3 2 7.5 5.8" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M3 6h14M7 10h14M3 14h14M7 18h14" />
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 20.5 4.6 13.2a4.6 4.6 0 0 1 6.5-6.5l.9.9.9-.9a4.6 4.6 0 0 1 6.5 6.5z" />
+    </symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24">
+      <path d="M5 19C5 10.5 10.5 5 19.5 4.5 19 13.5 13.5 19 5 19z" />
+      <path d="M5 19l8-8" />
+    </symbol>
+    <symbol id="i-share" viewBox="0 0 24 24">
+      <circle cx="9" cy="8.5" r="3.2" />
+      <path d="M3 19.5c.7-3.3 3-5.2 6-5.2s5.3 1.9 6 5.2" />
+      <path d="M15.5 5.6a3 3 0 0 1 0 5.8M17.5 14.6c1.8.6 3 2.2 3.5 4.9" />
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" />
+      <circle cx="12" cy="10" r="2.3" />
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path
+        d="M8.6 3.8 6.3 4.4a2 2 0 0 0-1.4 2.2 15.4 15.4 0 0 0 12.5 12.5 2 2 0 0 0 2.2-1.4l.6-2.3-3.8-1.6-1.6 1.9a10.9 10.9 0 0 1-4.5-4.5l1.9-1.6z" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M5 12.5 9.5 17 19 7.5" />
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 11v5.5M12 7.8v.2" />
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <path d="M12 4.5 21 19.5H3z" />
+      <path d="M12 10v4M12 16.8v.2" />
+    </symbol>
+    <symbol id="i-error" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M9 9l6 6M15 9l-6 6" />
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14" />
+    </symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24">
+      <path d="M5 12h14" />
+    </symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24">
+      <path d="M4 7h16M9.5 7V4.5h5V7M6 7l1 13h10l1-13M10 11v5.5M14 11v5.5" />
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="M9 6l6 6-6 6" />
+    </symbol>
+  </svg>
+
+  <header class="ds-header lr-surface-dark">
+    <div class="lr-container ds-header__inner">
+      <svg class="lr-picto ds-header__picto" aria-hidden="true">
+        <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+      </svg>
+      <p class="lr-eyebrow">SAé 3.01 · Click &amp; Collect · Angoulême</p>
+      <h1 class="ds-title"><span class="lr-text-gradient">Design System</span> <span>Le Lion Rouge</span></h1>
+      <p class="lr-script">Buon appetito !</p>
+      <p class="ds-header__meta">Version 1.0 du 12 octobre 2026. Les fondations et les composants du futur site de
+        commande à emporter, construits sur la charte réelle du restaurant et rendus accessibles.</p>
+    </div>
+  </header>
+
+  <div class="lr-container ds-layout">
+    <nav class="ds-toc" aria-labelledby="sommaire-titre">
+      <h2 id="sommaire-titre" class="ds-toc__title">Sommaire</h2>
+      <ol>
+        <li><a href="#principes"><span class="ds-toc__num">01</span>Principes</a></li>
+        <li><a href="#couleurs"><span class="ds-toc__num">02</span>Couleurs</a></li>
+        <li><a href="#degrade"><span class="ds-toc__num">03</span>Dégradé or</a></li>
+        <li><a href="#typographie"><span class="ds-toc__num">04</span>Typographie</a></li>
+        <li><a href="#espacements"><span class="ds-toc__num">05</span>Espacements et grille</a></li>
+        <li><a href="#formes"><span class="ds-toc__num">06</span>Filets et formes</a></li>
+        <li><a href="#icones"><span class="ds-toc__num">07</span>Icônes</a></li>
+        <li><a href="#logo"><span class="ds-toc__num">08</span>Logo</a></li>
+        <li><a href="#boutons"><span class="ds-toc__num">09</span>Boutons</a></li>
+        <li><a href="#badges"><span class="ds-toc__num">10</span>Badges et prix</a></li>
+        <li><a href="#navigation"><span class="ds-toc__num">11</span>Navigation</a></li>
+        <li><a href="#cartes"><span class="ds-toc__num">12</span>Cartes produit</a></li>
+        <li><a href="#fiche-produit"><span class="ds-toc__num">13</span>Fiche produit</a></li>
+        <li><a href="#formulaires"><span class="ds-toc__num">14</span>Formulaires</a></li>
+        <li><a href="#retrait"><span class="ds-toc__num">15</span>Créneau de retrait</a></li>
+        <li><a href="#notifications"><span class="ds-toc__num">16</span>Notifications</a></li>
+        <li><a href="#panier"><span class="ds-toc__num">17</span>Panier</a></li>
+        <li><a href="#accessibilite"><span class="ds-toc__num">18</span>Accessibilité</a></li>
+        <li><a href="#versions"><span class="ds-toc__num">19</span>Versions</a></li>
+      </ol>
+    </nav>
+
+    <main id="contenu" class="ds-main">
+
+      <!-- ============================== 01 PRINCIPES ============================== -->
+      <section class="ds-section" id="principes" aria-labelledby="principes-titre">
+        <h2 id="principes-titre">Principes</h2>
+        <p class="ds-intro">Quatre règles guident chaque écran. Elles reprennent l'esprit Art déco du restaurant (noir,
+          or, lignes fines) et corrigent ce qui bloque sur le site actuel : textes dorés illisibles sur fond clair et
+          intitulés en images.</p>
+        <ul class="ds-cards">
+          <li>
+            <h3>Lisible d'abord</h3>
+            <p>L'or clair ne sert de couleur de texte que sur fond noir. Sur fond crème, on passe à l'or foncé
+              <code>#7A5E28</code>. Tous les intitulés sont du vrai texte.</p>
+          </li>
+          <li>
+            <h3>Noir pour l'ambiance, crème pour agir</h3>
+            <p>L'en-tête, l'accueil et le pied de page sont noirs. La carte, la fiche produit, le panier et la commande
+              sont sur crème, plus reposant pour lire et remplir.</p>
+          </li>
+          <li>
+            <h3>Le filet doré structure</h3>
+            <p>Des lignes de 1 px et des angles droits, comme les cadres de la salle. Pas d'arrondis, peu d'ombres.</p>
+          </li>
+          <li>
+            <h3>Commander en trois gestes</h3>
+            <p>Choisir, personnaliser, retirer. Chaque écran n'a qu'une action principale, toujours en dégradé or.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============================== 02 COULEURS ============================== -->
+      <section class="ds-section" id="couleurs" aria-labelledby="couleurs-titre">
+        <h2 id="couleurs-titre">Couleurs</h2>
+        <p class="ds-intro">Les valeurs de la marque ont été relevées dans le code de lionrouge.fr. Les teintes ajoutées
+          sont des versions plus foncées ou plus claires qui passent le contraste WCAG AA.</p>
+
+        <h3>Couleurs de la marque</h3>
+        <ul class="ds-swatches">
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #F0CD7D"></span><strong>gold-200</strong><code>#F0CD7D</code><span>Or signature. Textes
+              et filets sur noir.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #C39C51"></span><strong>gold-400</strong><code>#C39C51</code><span>Or du logo. Filets
+              décoratifs sur clair.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #B79A56"></span><strong>gold-500</strong><code>#B79A56</code><span>Fin du dégradé,
+              contour des boutons.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #000000"></span><strong>black</strong><code>#000000</code><span>Fond des surfaces
+              sombres, titres sur clair.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #333333"></span><strong>ink</strong><code>#333333</code><span>Texte courant sur
+              clair.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #F4EFEC"></span><strong>cream</strong><code>#F4EFEC</code><span>Fond des pages
+              claires.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #FFFFFF"></span><strong>white</strong><code>#FFFFFF</code><span>Cartes, champs,
+              panneaux.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #677766"></span><strong>green-500</strong><code>#677766</code><span>Vert de la marque.
+              Icônes et grands textes.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #A02037"></span><strong>burgundy-600</strong><code>#A02037</code><span>Déclaré sur le
+              site mais inutilisé. Devient la couleur d'erreur.</span></li>
+        </ul>
+
+        <h3>Teintes ajoutées pour l'accessibilité</h3>
+        <ul class="ds-swatches">
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #7A5E28"></span><strong>gold-800</strong><code>#7A5E28</code><span>Or lisible sur clair :
+              liens, surtitres.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #4E5C4D"></span><strong>green-700</strong><code>#4E5C4D</code><span>Succès, en stock,
+              végétarien.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #8A5A00"></span><strong>amber-700</strong><code>#8A5A00</code><span>Stock faible,
+              avertissement.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #1A1A1A"></span><strong>black-soft</strong><code>#1A1A1A</code><span>Panneaux posés sur
+              fond noir.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #E5DDD6"></span><strong>grey-100</strong><code>#E5DDD6</code><span>Séparateurs neutres,
+              fond désactivé.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #C9C1BA"></span><strong>grey-300</strong><code>#C9C1BA</code><span>Texte secondaire sur
+              noir.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #8A8079"></span><strong>grey-500</strong><code>#8A8079</code><span>Contour des champs
+              (3:1 minimum).</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #6B635C"></span><strong>grey-700</strong><code>#6B635C</code><span>Texte secondaire sur
+              clair.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #5E5650"></span><strong>grey-800</strong><code>#5E5650</code><span>Texte d'un élément
+              désactivé.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #E8838F"></span><strong>burgundy-300</strong><code>#E8838F</code><span>Erreur sur fond
+              noir.</span></li>
+          <li class="ds-swatch"><span class="ds-swatch__chip"
+              style="--swatch: #A9BBA8"></span><strong>green-300</strong><code>#A9BBA8</code><span>Succès sur fond
+              noir.</span></li>
+        </ul>
+
+        <h3>Tokens sémantiques</h3>
+        <p class="ds-intro">Les composants n'utilisent que ces tokens. Chacun a deux valeurs : le mode Clair (par
+          défaut) et le mode Sombre (classe <code>lr-surface-dark</code>). Dans Figma, ce sont deux modes de la même
+          collection de variables.</p>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <caption>Tokens de couleur et leurs valeurs par mode</caption>
+            <thead>
+              <tr>
+                <th scope="col">Token</th>
+                <th scope="col">Clair</th>
+                <th scope="col">Sombre</th>
+                <th scope="col">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><code>--lr-color-bg</code></th>
+                <td><span class="ds-dot" style="--swatch: #F4EFEC"></span>cream</td>
+                <td><span class="ds-dot" style="--swatch: #000000"></span>black</td>
+                <td>Fond de page</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-bg-raised</code></th>
+                <td><span class="ds-dot" style="--swatch: #FFFFFF"></span>white</td>
+                <td><span class="ds-dot" style="--swatch: #1A1A1A"></span>black-soft</td>
+                <td>Cartes, champs, panneaux</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-text</code></th>
+                <td><span class="ds-dot" style="--swatch: #333333"></span>ink</td>
+                <td><span class="ds-dot" style="--swatch: #F4EFEC"></span>cream</td>
+                <td>Texte courant</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-text-muted</code></th>
+                <td><span class="ds-dot" style="--swatch: #6B635C"></span>grey-700</td>
+                <td><span class="ds-dot" style="--swatch: #C9C1BA"></span>grey-300</td>
+                <td>Descriptions, aides</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-heading</code></th>
+                <td><span class="ds-dot" style="--swatch: #000000"></span>black</td>
+                <td><span class="ds-dot" style="--swatch: #F0CD7D"></span>gold-200</td>
+                <td>Titres, prix, éléments actifs</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-accent</code></th>
+                <td><span class="ds-dot" style="--swatch: #7A5E28"></span>gold-800</td>
+                <td><span class="ds-dot" style="--swatch: #F0CD7D"></span>gold-200</td>
+                <td>Liens, surtitres</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-hairline</code></th>
+                <td><span class="ds-dot" style="--swatch: #C39C51"></span>gold-400</td>
+                <td><span class="ds-dot" style="--swatch: #F0CD7D"></span>gold-200</td>
+                <td>Filets décoratifs, contour des cartes</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-border</code></th>
+                <td><span class="ds-dot" style="--swatch: #8A8079"></span>grey-500</td>
+                <td><span class="ds-dot" style="--swatch: #8A8079"></span>grey-500</td>
+                <td>Contour des champs et des options</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-divider</code></th>
+                <td><span class="ds-dot" style="--swatch: #E5DDD6"></span>grey-100</td>
+                <td><span class="ds-dot" style="--swatch: #333333"></span>ink</td>
+                <td>Séparateurs neutres</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-focus</code></th>
+                <td><span class="ds-dot" style="--swatch: #000000"></span>black</td>
+                <td><span class="ds-dot" style="--swatch: #F0CD7D"></span>gold-200</td>
+                <td>Anneau de focus clavier</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-success</code></th>
+                <td><span class="ds-dot" style="--swatch: #4E5C4D"></span>green-700</td>
+                <td><span class="ds-dot" style="--swatch: #A9BBA8"></span>green-300</td>
+                <td>Succès, en stock, végétarien</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-warning</code></th>
+                <td><span class="ds-dot" style="--swatch: #8A5A00"></span>amber-700</td>
+                <td><span class="ds-dot" style="--swatch: #F0CD7D"></span>gold-200</td>
+                <td>Stock faible</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>--lr-color-danger</code></th>
+                <td><span class="ds-dot" style="--swatch: #A02037"></span>burgundy-600</td>
+                <td><span class="ds-dot" style="--swatch: #E8838F"></span>burgundy-300</td>
+                <td>Erreurs, épuisé</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Contrastes vérifiés</h3>
+        <p class="ds-intro">Seuils WCAG 2.2 niveau AA : 4,5:1 pour le texte courant, 3:1 pour le texte de 24 px et plus
+          (ou 19 px en gras) et pour les contours de composants.</p>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <caption>Combinaisons texte et fond</caption>
+            <thead>
+              <tr>
+                <th scope="col">Aperçu</th>
+                <th scope="col">Texte sur fond</th>
+                <th scope="col">Ratio</th>
+                <th scope="col">Verdict AA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="rowgroup" colspan="4">Site actuel</th>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #F0CD7D; --bg: #FFFFFF">Aa</span></td>
+                <th scope="row">gold-200 sur white</th>
+                <td>1,53:1</td>
+                <td><span class="ds-fail"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-error" />
+                    </svg>Échec</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #FFFFFF; --bg: #B79A56">Aa</span></td>
+                <th scope="row">white sur gold-500 (boutons actuels)</th>
+                <td>2,70:1</td>
+                <td><span class="ds-fail"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-error" />
+                    </svg>Échec</span></td>
+              </tr>
+              <tr>
+                <th scope="rowgroup" colspan="4">Design System</th>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #333333; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">ink sur cream</th>
+                <td>11,07:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #000000; --bg: #B79A56">Aa</span></td>
+                <th scope="row">black sur gold-500 (bouton principal, point le plus foncé)</th>
+                <td>7,77:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #F0CD7D; --bg: #000000">Aa</span></td>
+                <th scope="row">gold-200 sur black</th>
+                <td>13,73:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #F4EFEC; --bg: #000000">Aa</span></td>
+                <th scope="row">cream sur black</th>
+                <td>18,40:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #C9C1BA; --bg: #000000">Aa</span></td>
+                <th scope="row">grey-300 sur black</th>
+                <td>11,82:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #7A5E28; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">gold-800 sur cream</th>
+                <td>5,32:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #6B635C; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">grey-700 sur cream</th>
+                <td>5,16:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #4E5C4D; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">green-700 sur cream</th>
+                <td>6,21:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #8A5A00; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">amber-700 sur cream</th>
+                <td>5,19:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #A02037; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">burgundy-600 sur cream</th>
+                <td>6,68:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #5E5650; --bg: #E5DDD6">Aa</span></td>
+                <th scope="row">grey-800 sur grey-100 (désactivé)</th>
+                <td>5,35:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #677766; --bg: #F4EFEC">Aa</span></td>
+                <th scope="row">green-500 sur cream</th>
+                <td>4,18:1</td>
+                <td><span class="ds-large"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-alert" />
+                    </svg>Grand texte seulement</span></td>
+              </tr>
+              <tr>
+                <td><span class="ds-sample" style="--fg: #8A8079; --bg: #F4EFEC">▢</span></td>
+                <th scope="row">grey-500 sur cream (contour de champ)</th>
+                <td>3,38:1</td>
+                <td><span class="ds-pass"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>Réussi (contour)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================== 03 DÉGRADÉ ============================== -->
+      <section class="ds-section" id="degrade" aria-labelledby="degrade-titre">
+        <h2 id="degrade-titre">Dégradé or</h2>
+        <p class="ds-intro">Le dégradé radial du site devient la signature des actions principales. Le texte posé dessus
+          est toujours noir.</p>
+        <div class="ds-split">
+          <ul class="ds-swatches">
+            <li class="ds-swatch"><span
+                class="ds-swatch__chip ds-swatch__chip--gradient"></span><strong>gradient-gold</strong><code>radial #F0CD7D → #B79A56</code><span>Boutons
+                principaux, étape en cours, texte en dégradé.</span></li>
+          </ul>
+          <div class="ds-demo lr-surface-dark">
+            <span class="ds-caption">Sur fond noir</span>
+            <p class="lr-display"><span class="lr-text-gradient">La carte</span></p>
+            <a class="lr-btn lr-btn--primary" href="#cartes">Commander</a>
+          </div>
+        </div>
+        <ul class="ds-checklist">
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Bouton principal : dégradé et texte noir (7,77:1 au point le plus foncé).</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Texte en dégradé : seulement en grand titre (36 px et plus) sur fond noir.</span></li>
+          <li class="ds-no"><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-error" />
+            </svg><span>Jamais de texte blanc ou doré sur le dégradé, jamais de dégradé en fond de bloc de texte.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============================== 04 TYPOGRAPHIE ============================== -->
+      <section class="ds-section" id="typographie" aria-labelledby="typographie-titre">
+        <h2 id="typographie-titre">Typographie</h2>
+        <p class="ds-intro">Marisa et CC Font 2 sont des polices créées pour le restaurant avec Fontself, et Arsen
+          Script est une police commerciale. Aucune n'a de licence dans ses fichiers. Le Design System utilise donc des
+          équivalents libres (SIL OFL), auto-hébergés pour éviter d'appeler Google Fonts (RGPD et performance).</p>
+        <ul class="ds-specimens">
+          <li class="ds-specimen">
+            <span class="ds-caption">Titres, boutons, noms de plats</span>
+            <p class="ds-specimen__sample ds-ff-display">Pizza Monza</p>
+            <p><strong>Tenor Sans 400</strong>, remplace Marisa. Toujours en capitales, interlettrage 0,12 em.</p>
+            <p class="ds-ff-display">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 € É À Ç Œ</p>
+          </li>
+          <li class="ds-specimen">
+            <span class="ds-caption">Onglets de la carte, surtitres, badges</span>
+            <p class="ds-specimen__sample ds-ff-label">Antipasti · Pizze</p>
+            <p><strong>Josefin Sans 300 et 600</strong>, remplace CC Font 2. Capitales, interlettrage 0,08 em.</p>
+            <p class="ds-weights ds-ff-label"><span class="lr-label">Light 300</span><strong>Semibold 600</strong></p>
+          </li>
+          <li class="ds-specimen">
+            <span class="ds-caption">Textes, formulaires, prix</span>
+            <p class="ds-specimen__sample ds-ff-body">Crème, mozzarella, jambon.</p>
+            <p><strong>Poppins 300, 400 et 600</strong>, déjà utilisée par le site. Corps de texte à 16 px minimum.</p>
+            <p class="ds-weights"><span style="font-weight: 300">Light 300</span><span>Regular
+                400</span><strong>Semibold 600</strong></p>
+          </li>
+          <li class="ds-specimen">
+            <span class="ds-caption">Accroches manuscrites</span>
+            <p class="ds-specimen__sample ds-ff-script">Buon appetito !</p>
+            <p><strong>Allison 400</strong>, remplace Arsen Script, qui n'a ni accents ni symbole euro. Une accroche par
+              écran, 56 px minimum, jamais pour une information.</p>
+          </li>
+        </ul>
+
+        <h3>Échelle typographique</h3>
+        <p class="ds-intro">Les tailles des titres s'adaptent entre mobile (390 px) et desktop (1440 px) avec
+          <code>clamp()</code>. Les valeurs sont en rem pour suivre le zoom du navigateur.</p>
+        <ul class="ds-scale">
+          <li>
+            <p class="lr-script">Buon appetito !</p><code>--lr-fs-script · Allison · 56 → 90 px · interligne 1</code>
+          </li>
+          <li>
+            <p class="lr-display">La carte</p>
+            <code>--lr-fs-display · Tenor Sans · 36 → 56 px · capitales · interligne 1,1</code>
+          </li>
+          <li>
+            <p class="lr-h1">Pizze</p><code>--lr-fs-h1 · Tenor Sans · 30 → 36 px · capitales · interligne 1,25</code>
+          </li>
+          <li>
+            <p class="lr-h2">Nos coups de cœur</p><code>--lr-fs-h2 · Tenor Sans · 24 → 28 px · capitales</code>
+          </li>
+          <li>
+            <p class="lr-h3">Pizza Monza</p>
+            <code>--lr-fs-h3 · Tenor Sans · 20 px · capitales · interlettrage 0,06 em</code>
+          </li>
+          <li>
+            <p class="lr-lead">Crème, mozzarella, jambon et gorgonzola sur une pâte fine.</p>
+            <code>--lr-fs-lead · Poppins 400 · 18 px · interligne 1,6</code>
+          </li>
+          <li>
+            <p>Commandez avant 19&nbsp;h et récupérez votre repas au comptoir, place Francis Louvel.</p>
+            <code>--lr-fs-body · Poppins 400 · 16 px · interligne 1,6</code>
+          </li>
+          <li>
+            <p class="lr-small">Allergènes : gluten, lait.</p>
+            <code>--lr-fs-small · Poppins 400 · 14 px (minimum pour un texte courant)</code>
+          </li>
+          <li>
+            <p class="lr-eyebrow">Coup de cœur du chef</p>
+            <code>--lr-fs-xs · Josefin Sans 600 · 13 px · capitales (labels courts seulement)</code>
+          </li>
+          <li>
+            <p class="lr-price">17,00&nbsp;€</p><code>Prix · Poppins 600 · 18 px · chiffres tabulaires</code>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============================== 05 ESPACEMENTS ============================== -->
+      <section class="ds-section" id="espacements" aria-labelledby="espacements-titre">
+        <h2 id="espacements-titre">Espacements et grille</h2>
+        <p class="ds-intro">Une base de 4 px. Le nom du token donne sa valeur en pixels, comme dans les variables Figma.
+        </p>
+        <ul class="ds-spaces">
+          <li><code>--lr-space-4</code><span style="--size: 0.25rem"></span></li>
+          <li><code>--lr-space-8</code><span style="--size: 0.5rem"></span></li>
+          <li><code>--lr-space-12</code><span style="--size: 0.75rem"></span></li>
+          <li><code>--lr-space-16</code><span style="--size: 1rem"></span></li>
+          <li><code>--lr-space-24</code><span style="--size: 1.5rem"></span></li>
+          <li><code>--lr-space-32</code><span style="--size: 2rem"></span></li>
+          <li><code>--lr-space-48</code><span style="--size: 3rem"></span></li>
+          <li><code>--lr-space-64</code><span style="--size: 4rem"></span></li>
+          <li><code>--lr-space-96</code><span style="--size: 6rem"></span></li>
+        </ul>
+
+        <h3>Points de rupture</h3>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <caption>Grille responsive, conçue d'abord pour le mobile</caption>
+            <thead>
+              <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">À partir de</th>
+                <th scope="col">Produits par ligne</th>
+                <th scope="col">Changements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Mobile</th>
+                <td>0</td>
+                <td>1</td>
+                <td>Menu burger, marges de 16 px. Maquette Figma à 390 px.</td>
+              </tr>
+              <tr>
+                <th scope="row">Grand mobile</th>
+                <td>36 em (576 px)</td>
+                <td>2</td>
+                <td>Les étapes de commande affichent tous leurs libellés.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tablette</th>
+                <td>48 em (768 px)</td>
+                <td>2</td>
+                <td>Pied de page sur 4 colonnes, ligne panier sur une rangée.</td>
+              </tr>
+              <tr>
+                <th scope="row">Desktop</th>
+                <td>64 em (1024 px)</td>
+                <td>3</td>
+                <td>Fiche produit et panier sur 2 colonnes.</td>
+              </tr>
+              <tr>
+                <th scope="row">Large</th>
+                <td>72 em (1152 px)</td>
+                <td>3</td>
+                <td>Menu complet dans l'en-tête. Conteneur centré de 1152 px maximum. Maquette Figma à 1440 px.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ds-demo ds-demo--bg">
+          <span class="ds-caption">Grille produits <code>.lr-grid</code> : redimensionnez la fenêtre</span>
+          <ul class="lr-grid ds-grid-demo">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================== 06 FORMES ============================== -->
+      <section class="ds-section" id="formes" aria-labelledby="formes-titre">
+        <h2 id="formes-titre">Filets et formes</h2>
+        <p class="ds-intro">Angles droits partout (<code>--lr-radius-0</code>). Le seul arrondi est la pastille du
+          compteur du panier.</p>
+        <ul class="ds-shapes">
+          <li><span class="ds-shape ds-shape--hairline"></span><code>--lr-border-hairline</code> 1 px, filet or</li>
+          <li><span class="ds-shape ds-shape--strong"></span><code>--lr-border-strong</code> 2 px, sélection et focus
+          </li>
+          <li><span class="ds-shape ds-shape--status"></span><code>--lr-border-status</code> 4 px, notifications</li>
+          <li><span class="ds-shape ds-shape--shadow-1"></span><code>--lr-shadow-1</code> survol des cartes</li>
+          <li><span class="ds-shape ds-shape--shadow-2"></span><code>--lr-shadow-2</code> menus et fenêtres</li>
+        </ul>
+        <div class="ds-demo">
+          <span class="ds-caption">Séparateur de section <code>.lr-divider</code></span>
+          <div class="lr-divider" aria-hidden="true"><svg class="lr-picto">
+              <use href="#lr-picto" />
+            </svg></div>
+        </div>
+      </section>
+
+      <!-- ============================== 07 ICÔNES ============================== -->
+      <section class="ds-section" id="icones" aria-labelledby="icones-titre">
+        <h2 id="icones-titre">Icônes</h2>
+        <p class="ds-intro">Trait de 1,5 px sur une grille de 24 px, extrémités arrondies, couleur héritée du texte
+          (<code>currentColor</code>). Une icône seule a toujours un nom accessible ; à côté d'un texte, elle est
+          masquée aux lecteurs d'écran. L'icône du menu reprend les quatre barres décalées du site.</p>
+        <ul class="ds-icons">
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-bag" />
+            </svg><span>Panier</span><code>i-bag</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-user" />
+            </svg><span>Compte</span><code>i-user</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-menu" />
+            </svg><span>Menu</span><code>i-menu</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-close" />
+            </svg><span>Fermer</span><code>i-close</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-heart" />
+            </svg><span>Coup de cœur</span><code>i-heart</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-leaf" />
+            </svg><span>Végétarien</span><code>i-leaf</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-share" />
+            </svg><span>À partager</span><code>i-share</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-clock" />
+            </svg><span>Créneau</span><code>i-clock</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-pin" />
+            </svg><span>Adresse</span><code>i-pin</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-phone" />
+            </svg><span>Téléphone</span><code>i-phone</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Validé</span><code>i-check</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-info" />
+            </svg><span>Information</span><code>i-info</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-alert" />
+            </svg><span>Attention</span><code>i-alert</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-error" />
+            </svg><span>Erreur</span><code>i-error</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-plus" />
+            </svg><span>Ajouter</span><code>i-plus</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-minus" />
+            </svg><span>Diminuer</span><code>i-minus</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-trash" />
+            </svg><span>Supprimer</span><code>i-trash</code></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-chevron" />
+            </svg><span>Suivant</span><code>i-chevron</code></li>
+        </ul>
+      </section>
+
+      <!-- ============================== 08 LOGO ============================== -->
+      <section class="ds-section" id="logo" aria-labelledby="logo-titre">
+        <h2 id="logo-titre">Logo</h2>
+        <p class="ds-intro">Le pictogramme du restaurant est un chapiteau de colonne stylisé (et non un lion). Il est
+          redessiné ici à partir des tracés du site. Dans Figma et WordPress, utilisez les fichiers SVG originaux
+          relevés sur lionrouge.fr ; le nom « Lion Rouge » est écrit en vrai texte dans l'en-tête.</p>
+        <ul class="ds-logos">
+          <li class="lr-surface-dark">
+            <svg class="lr-picto" aria-hidden="true">
+              <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+            </svg>
+            <span>Or dégradé sur noir : version principale</span>
+          </li>
+          <li class="ds-demo--bg">
+            <svg class="lr-picto" aria-hidden="true">
+              <use href="#lr-picto" />
+            </svg>
+            <span>Noir sur crème : fonds clairs, factures, e-mails</span>
+          </li>
+          <li class="lr-surface-dark ds-logos__wide">
+            <span class="lr-logo ds-clearspace"><svg class="lr-picto" aria-hidden="true">
+                <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+              </svg><span class="lr-logo__name">Lion Rouge</span></span>
+            <span>Version horizontale de l'en-tête. Zone de protection : 16 px autour.</span>
+          </li>
+          <li>
+            <span class="ds-picto-sizes"><svg class="lr-picto" aria-hidden="true">
+                <use href="#lr-picto" />
+              </svg><svg class="lr-picto" aria-hidden="true">
+                <use href="#lr-picto" />
+              </svg><svg class="lr-picto" aria-hidden="true">
+                <use href="#lr-picto" />
+              </svg></span>
+            <span>Tailles : 24 px minimum, 32 px dans l'en-tête, 48 px et plus en décor.</span>
+          </li>
+          <li class="lr-surface-dark">
+            <img
+              src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20gradientUnits='userSpaceOnUse'%20x1='36'%20y1='0'%20x2='476'%20y2='0'%3E%3Cstop%20offset='0'%20stop-color='%23C39C51'/%3E%3Cstop%20offset='0.5'%20stop-color='%23F0CD7D'/%3E%3Cstop%20offset='1'%20stop-color='%23C39C51'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width='512'%20height='512'%20rx='64'%20fill='%23000'/%3E%3Cg%20fill='url(%23g)'%20transform='translate(51.2%2051.2)%20scale(0.8)'%3E%3Cpolygon%20points='417,139.9%2095,139.9%2081.8,139.9%2081.8,155%2081.8,170.1%2088.4,170.1%20240.9,170.1%20240.9,477.9%20240.9,493%20256,493%20271.1,493%20271.1,485.4%20271.1,170.1%20423.6,170.1%20430.2,170.1%20430.2,155%20430.2,139.9'/%3E%3Cpolygon%20points='240.9,19%20240.9,79.4%20160.8,79.4%20160.8,49.2%20130.6,49.2%20130.6,79.4%20130.6,94.5%20130.6,108.7%20130.6,109.7%20135.4,109.7%20240.9,109.7%20271.1,109.7%20351.2,109.7%20376.6,109.7%20381.4,109.7%20381.4,94.5%20381.4,79.4%20381.4,50.2%20351.2,50.2%20351.2,79.4%20271.1,79.4%20271.1,19'/%3E%3Cpath%20d='M195.6,200.3h-15.1H93.4c-31.5,0-56.9,25.5-56.9,56.9c0,31.5,26.1,56.9,56.9,56.9s55.1-23.7,56.8-53.5h-30.3c-1.7,13.1-12.3,23.3-26.5,23.3s-26.7-12-26.7-26.7c0-14.8,12-26.7,26.7-26.7h50.3h36.8v212.3l30.2,16.7V230.5v-15.1v-15.1H195.6z'/%3E%3Cpath%20d='M331.5,200.3h-15.1h-15.1v30.2v229.1l30.2-16.7V230.5h36.8h50.3c14.8,0,26.7,12,26.7,26.7c0,14.8-12.5,26.7-26.7,26.7s-24.8-10.2-26.5-23.3h-30.3c1.8,29.8,26,53.5,56.8,53.5c30.9,0,56.9-25.5,56.9-56.9c0-31.5-25.5-56.9-56.9-56.9L331.5,200.3L331.5,200.3z'/%3E%3C/g%3E%3C/svg%3E"
+              width="48" height="48" alt="Favicon : pictogramme or sur carré noir">
+            <span>Favicon : fond noir pour rester visible sur les onglets clairs.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============================== 09 BOUTONS ============================== -->
+      <section class="ds-section" id="boutons" aria-labelledby="boutons-titre">
+        <h2 id="boutons-titre">Boutons</h2>
+        <p class="ds-intro">Hauteur minimale de 44 px pour le tactile. Un seul bouton principal par écran. Un lien qui
+          change de page reste un lien <code>&lt;a&gt;</code> ; une action sur la page est un
+          <code>&lt;button&gt;</code>.</p>
+
+        <h3>Variantes</h3>
+        <div class="ds-demo">
+          <div class="ds-row">
+            <button class="lr-btn lr-btn--primary" type="button"><svg class="lr-icon" aria-hidden="true">
+                <use href="#i-bag" />
+              </svg>Ajouter au panier</button>
+            <a class="lr-btn lr-btn--secondary" href="#cartes">Voir la carte</a>
+            <button class="lr-btn lr-btn--link" type="button">Modifier</button>
+            <button class="lr-btn lr-btn--icon" type="button"><svg class="lr-icon" aria-hidden="true">
+                <use href="#i-bag" />
+              </svg><span class="lr-visually-hidden">Panier, 2 articles</span><span class="lr-count"
+                aria-hidden="true">2</span></button>
+            <button class="lr-btn lr-btn--primary" type="button" disabled>Épuisé</button>
+          </div>
+          <div class="ds-row">
+            <button class="lr-btn lr-btn--primary lr-btn--lg" type="button">Valider ma commande</button>
+          </div>
+        </div>
+
+        <h3>États</h3>
+        <div class="ds-demo">
+          <span class="ds-caption">Principal</span>
+          <div class="ds-row">
+            <div class="ds-state"><button class="lr-btn lr-btn--primary"
+                type="button">Commander</button><span>Défaut</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--primary is-hover"
+                type="button">Commander</button><span>Survol</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--primary is-active"
+                type="button">Commander</button><span>Pressé</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--primary is-focus"
+                type="button">Commander</button><span>Focus clavier</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--primary" type="button"
+                disabled>Commander</button><span>Désactivé</span></div>
+          </div>
+          <span class="ds-caption">Secondaire</span>
+          <div class="ds-row">
+            <div class="ds-state"><button class="lr-btn lr-btn--secondary"
+                type="button">Personnaliser</button><span>Défaut</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--secondary is-hover"
+                type="button">Personnaliser</button><span>Survol</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--secondary is-active"
+                type="button">Personnaliser</button><span>Pressé</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--secondary is-focus"
+                type="button">Personnaliser</button><span>Focus clavier</span></div>
+            <div class="ds-state"><button class="lr-btn lr-btn--secondary" type="button"
+                disabled>Personnaliser</button><span>Désactivé</span></div>
+          </div>
+        </div>
+
+        <div class="ds-demo lr-surface-dark">
+          <span class="ds-caption">Sur fond noir</span>
+          <div class="ds-row">
+            <a class="lr-btn lr-btn--primary" href="#cartes">Commander</a>
+            <a class="lr-btn lr-btn--secondary" href="#logo">Découvrir le lieu</a>
+            <button class="lr-btn lr-btn--secondary is-hover" type="button">Survol</button>
+            <button class="lr-btn lr-btn--secondary is-focus" type="button">Focus</button>
+            <a class="lr-btn lr-btn--link" href="#retrait">Infos pratiques</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 10 BADGES ============================== -->
+      <section class="ds-section" id="badges" aria-labelledby="badges-titre">
+        <h2 id="badges-titre">Badges, stock et prix</h2>
+        <p class="ds-intro">Une couleur ne porte jamais seule une information : chaque badge a une icône et un mot.</p>
+
+        <h3>Collections</h3>
+        <div class="ds-demo">
+          <ul class="lr-badges">
+            <li class="lr-badge lr-badge--favorite"><svg class="lr-icon lr-icon--filled" aria-hidden="true">
+                <use href="#i-heart" />
+              </svg>Coup de cœur</li>
+            <li class="lr-badge lr-badge--veggie"><svg class="lr-icon" aria-hidden="true">
+                <use href="#i-leaf" />
+              </svg>Végétarien</li>
+            <li class="lr-badge lr-badge--share"><svg class="lr-icon" aria-hidden="true">
+                <use href="#i-share" />
+              </svg>À partager</li>
+          </ul>
+        </div>
+
+        <h3>Disponibilité</h3>
+        <div class="ds-demo">
+          <div class="ds-row">
+            <p class="lr-stock lr-stock--in"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                <use href="#i-check" />
+              </svg>En stock</p>
+            <p class="lr-stock lr-stock--low"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                <use href="#i-alert" />
+              </svg>Plus que 3</p>
+            <p class="lr-stock lr-stock--out"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                <use href="#i-error" />
+              </svg>Épuisé</p>
+          </div>
+        </div>
+
+        <h3>Prix</h3>
+        <div class="ds-demo">
+          <div class="ds-row">
+            <div class="ds-state">
+              <p class="lr-price">17,00&nbsp;€</p><span>Produit simple</span>
+            </div>
+            <div class="ds-state">
+              <p class="lr-price"><span class="lr-price__from">À partir de</span> 8,00&nbsp;€</p><span>Produit
+                variable</span>
+            </div>
+            <div class="ds-state">
+              <p class="lr-price"><del><span class="lr-visually-hidden">Prix initial : </span>19,00&nbsp;€</del>
+                <ins><span class="lr-visually-hidden">Prix réduit : </span>15,20&nbsp;€</ins></p><span>Code promo
+                appliqué</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 11 NAVIGATION ============================== -->
+      <section class="ds-section" id="navigation" aria-labelledby="navigation-titre">
+        <h2 id="navigation-titre">Navigation</h2>
+
+        <h3>En-tête</h3>
+        <p class="ds-intro">Sur mobile et tablette : menu burger, logo centré et panier ; « Mon compte » passe dans le
+          menu. À partir de 1152 px, le menu s'affiche en entier. Le compteur du panier est lu « Panier, 2 articles ».
+        </p>
+        <div class="ds-demo ds-demo--flush">
+          <header class="lr-header lr-surface-dark">
+            <div class="lr-container lr-header__inner">
+              <button class="lr-btn lr-btn--icon lr-header__toggle" type="button" aria-expanded="false"
+                aria-controls="menu-exemple">
+                <svg class="lr-icon lr-burger-icon" aria-hidden="true">
+                  <use href="#i-menu" />
+                </svg>
+                <svg class="lr-icon lr-close-icon" aria-hidden="true">
+                  <use href="#i-close" />
+                </svg>
+                <span class="lr-visually-hidden">Menu</span>
+              </button>
+              <a class="lr-logo" href="#navigation"><svg class="lr-picto" aria-hidden="true">
+                  <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+                </svg><span class="lr-logo__name">Lion Rouge</span><span class="lr-visually-hidden">, accueil</span></a>
+              <nav class="lr-header__nav" id="menu-exemple" aria-label="Menu principal (exemple)">
+                <ul class="lr-header__menu">
+                  <li><a href="#cartes" aria-current="page">La carte</a></li>
+                  <li><a href="#badges">Collections</a></li>
+                  <li><a href="#logo">Le lieu</a></li>
+                  <li><a href="#principes">L'équipe</a></li>
+                  <li><a href="#retrait">Infos pratiques</a></li>
+                  <li class="lr-header__menu-account"><a href="#formulaires">Mon compte</a></li>
+                </ul>
+              </nav>
+              <div class="lr-header__actions">
+                <a class="lr-btn lr-btn--icon lr-header__account" href="#formulaires"><svg class="lr-icon"
+                    aria-hidden="true">
+                    <use href="#i-user" />
+                  </svg><span class="lr-visually-hidden">Mon compte</span></a>
+                <a class="lr-btn lr-btn--icon" href="#panier"><svg class="lr-icon" aria-hidden="true">
+                    <use href="#i-bag" />
+                  </svg><span class="lr-visually-hidden">Panier, 2 articles</span><span class="lr-count"
+                    aria-hidden="true">2</span></a>
+              </div>
+            </div>
+          </header>
+        </div>
+
+        <div class="ds-demo ds-demo--bg ds-demo--frame">
+          <span class="ds-caption">Mobile, menu ouvert</span>
+          <div class="ds-frame">
+            <header class="lr-header lr-header--compact lr-surface-dark is-open">
+              <div class="lr-container lr-header__inner">
+                <button class="lr-btn lr-btn--icon lr-header__toggle" type="button" aria-expanded="true"
+                  aria-controls="menu-exemple-mobile">
+                  <svg class="lr-icon lr-burger-icon" aria-hidden="true">
+                    <use href="#i-menu" />
+                  </svg>
+                  <svg class="lr-icon lr-close-icon" aria-hidden="true">
+                    <use href="#i-close" />
+                  </svg>
+                  <span class="lr-visually-hidden">Fermer le menu</span>
+                </button>
+                <a class="lr-logo" href="#navigation"><svg class="lr-picto" aria-hidden="true">
+                    <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+                  </svg><span class="lr-logo__name">Lion Rouge</span><span class="lr-visually-hidden">,
+                    accueil</span></a>
+                <nav class="lr-header__nav" id="menu-exemple-mobile" aria-label="Menu principal mobile (exemple)">
+                  <ul class="lr-header__menu">
+                    <li><a href="#cartes" aria-current="page">La carte</a></li>
+                    <li><a href="#badges">Collections</a></li>
+                    <li><a href="#logo">Le lieu</a></li>
+                    <li><a href="#principes">L'équipe</a></li>
+                    <li><a href="#retrait">Infos pratiques</a></li>
+                    <li class="lr-header__menu-account"><a href="#formulaires">Mon compte</a></li>
+                  </ul>
+                </nav>
+                <div class="lr-header__actions">
+                  <a class="lr-btn lr-btn--icon" href="#panier"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-bag" />
+                    </svg><span class="lr-visually-hidden">Panier, 2 articles</span><span class="lr-count"
+                      aria-hidden="true">2</span></a>
+                </div>
+              </div>
+            </header>
+          </div>
+        </div>
+
+        <h3>Onglets de la carte</h3>
+        <p class="ds-intro">Chaque catégorie WooCommerce est une page : ce sont des liens, avec
+          <code>aria-current="page"</code> sur la catégorie affichée. Sur mobile, la liste défile horizontalement.</p>
+        <div class="ds-demo">
+          <nav class="lr-tabs" aria-label="Catégories de la carte">
+            <ul class="lr-tabs__list">
+              <li><a class="lr-tabs__link" href="#cartes">Antipasti</a></li>
+              <li><a class="lr-tabs__link" href="#cartes" aria-current="page">Pizze</a></li>
+              <li><a class="lr-tabs__link" href="#cartes">Pasta &amp; Risotto</a></li>
+              <li><a class="lr-tabs__link" href="#cartes">Dolci &amp; Gelato</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <h3>Fil d'Ariane</h3>
+        <div class="ds-demo">
+          <nav class="lr-breadcrumb" aria-label="Fil d'Ariane">
+            <ol>
+              <li><a href="#navigation">Accueil</a></li>
+              <li><a href="#cartes">La carte</a></li>
+              <li><a href="#cartes">Pizze</a></li>
+              <li><span aria-current="page">Pizza Monza</span></li>
+            </ol>
+          </nav>
+        </div>
+
+        <h3>Pied de page</h3>
+        <div class="ds-demo ds-demo--flush">
+          <footer class="lr-footer lr-surface-dark">
+            <div class="lr-container lr-footer__inner">
+              <div>
+                <span class="lr-logo"><svg class="lr-picto" aria-hidden="true">
+                    <use href="#lr-picto" fill="url(#lr-grad-picto)" />
+                  </svg><span class="lr-logo__name">Lion Rouge</span></span>
+                <p class="lr-muted">Restaurant italien à Angoulême. Commandez en ligne, retirez au comptoir.</p>
+              </div>
+              <div>
+                <h4 class="lr-footer__title">Adresse</h4>
+                <address>3 place Francis Louvel<br>16000 Angoulême<br><a href="tel:+33545200835">05 45 20 08 35</a>
+                </address>
+              </div>
+              <div>
+                <h4 class="lr-footer__title">Horaires</h4>
+                <dl class="lr-hours">
+                  <div>
+                    <dt>Mardi au jeudi</dt>
+                    <dd>12&nbsp;h – 14&nbsp;h et 19&nbsp;h – 22&nbsp;h&nbsp;30</dd>
+                  </div>
+                  <div>
+                    <dt>Vendredi et samedi</dt>
+                    <dd>19&nbsp;h – 23&nbsp;h</dd>
+                  </div>
+                  <div>
+                    <dt>Dimanche et lundi</dt>
+                    <dd>Fermé</dd>
+                  </div>
+                </dl>
+              </div>
+              <nav aria-labelledby="pied-infos">
+                <h4 class="lr-footer__title" id="pied-infos">Informations</h4>
+                <ul class="lr-footer__links">
+                  <li><a href="#versions">Mentions légales</a></li>
+                  <li><a href="#versions">Conditions générales de vente</a></li>
+                  <li><a href="#versions">Confidentialité</a></li>
+                  <li><a href="#versions">Instagram</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div class="lr-container lr-footer__bottom">
+              <p>© 2026 Le Lion Rouge</p>
+              <p>Paiement au retrait · Retrait gratuit</p>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <!-- ============================== 12 CARTES PRODUIT ============================== -->
+      <section class="ds-section" id="cartes" aria-labelledby="cartes-titre">
+        <h2 id="cartes-titre">Cartes produit</h2>
+        <p class="ds-intro">Toute la carte est cliquable grâce au lien du titre ; le bouton reste une action séparée.
+          Trois variantes : produit simple (ajout direct), produit variable (vers la fiche) et produit épuisé.</p>
+        <div class="ds-demo ds-demo--bg">
+          <ul class="lr-grid">
+            <li>
+              <article class="lr-card">
+                <div class="lr-card__media">
+                  <div class="lr-media-placeholder" role="img" aria-label="Emplacement de la photo : focaccia"><svg
+                      class="lr-picto" aria-hidden="true">
+                      <use href="#lr-picto" />
+                    </svg></div>
+                  <ul class="lr-badges lr-card__badges" aria-label="Labels">
+                    <li class="lr-badge lr-badge--favorite"><svg class="lr-icon lr-icon--filled" aria-hidden="true">
+                        <use href="#i-heart" />
+                      </svg>Coup de cœur</li>
+                    <li class="lr-badge lr-badge--veggie"><svg class="lr-icon" aria-hidden="true">
+                        <use href="#i-leaf" />
+                      </svg>Végétarien</li>
+                  </ul>
+                </div>
+                <div class="lr-card__body">
+                  <h3 class="lr-card__title"><a class="lr-card__link" href="#fiche-produit">Focaccia</a></h3>
+                  <p class="lr-card__desc">Thym et huile d'olive.</p>
+                  <p class="lr-card__allergens"><strong>Allergènes :</strong> gluten</p>
+                  <p class="lr-stock lr-stock--in"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-check" />
+                    </svg>En stock</p>
+                  <div class="lr-card__footer">
+                    <p class="lr-price">5,00&nbsp;€</p>
+                    <button class="lr-btn lr-btn--primary" type="button"><svg class="lr-icon" aria-hidden="true">
+                        <use href="#i-plus" />
+                      </svg>Ajouter<span class="lr-visually-hidden"> la focaccia au panier</span></button>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="lr-card">
+                <div class="lr-card__media">
+                  <div class="lr-media-placeholder" role="img" aria-label="Emplacement de la photo : pizza Monza"><svg
+                      class="lr-picto" aria-hidden="true">
+                      <use href="#lr-picto" />
+                    </svg></div>
+                  <ul class="lr-badges lr-card__badges" aria-label="Labels">
+                    <li class="lr-badge lr-badge--favorite"><svg class="lr-icon lr-icon--filled" aria-hidden="true">
+                        <use href="#i-heart" />
+                      </svg>Coup de cœur</li>
+                  </ul>
+                </div>
+                <div class="lr-card__body">
+                  <h3 class="lr-card__title"><a class="lr-card__link" href="#fiche-produit">Pizza Monza</a></h3>
+                  <p class="lr-card__desc">Crème, mozzarella, jambon, gorgonzola.</p>
+                  <p class="lr-card__allergens"><strong>Allergènes :</strong> gluten, lait</p>
+                  <div class="lr-card__footer">
+                    <p class="lr-price"><span class="lr-price__from">À partir de</span> 17,00&nbsp;€</p>
+                    <a class="lr-btn lr-btn--secondary" href="#fiche-produit">Personnaliser<span
+                        class="lr-visually-hidden"> la pizza Monza</span></a>
+                  </div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="lr-card lr-card--soldout">
+                <div class="lr-card__media">
+                  <div class="lr-media-placeholder" role="img" aria-label="Emplacement de la photo : tiramisu"><svg
+                      class="lr-picto" aria-hidden="true">
+                      <use href="#lr-picto" />
+                    </svg></div>
+                </div>
+                <div class="lr-card__body">
+                  <h3 class="lr-card__title"><a class="lr-card__link" href="#fiche-produit">Tiramisu</a></h3>
+                  <p class="lr-card__desc">Le classique au café et au mascarpone.</p>
+                  <p class="lr-card__allergens"><strong>Allergènes :</strong> gluten, lait, œufs</p>
+                  <p class="lr-stock lr-stock--out"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                      <use href="#i-error" />
+                    </svg>Épuisé aujourd'hui</p>
+                  <div class="lr-card__footer">
+                    <p class="lr-price">8,00&nbsp;€</p>
+                    <button class="lr-btn lr-btn--primary" type="button" disabled>Épuisé</button>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================== 13 FICHE PRODUIT ============================== -->
+      <section class="ds-section" id="fiche-produit" aria-labelledby="fiche-titre">
+        <h2 id="fiche-titre">Fiche produit</h2>
+        <p class="ds-intro">Les options sont de vrais boutons radio et cases à cocher, mis en forme en « puces » : le
+          clavier, les lecteurs d'écran et la validation du navigateur fonctionnent sans script. Le total se met à jour
+          en direct.</p>
+
+        <h3>Produit variable avec options</h3>
+        <div class="ds-demo">
+          <div class="ds-product">
+            <div class="ds-product__media">
+              <div class="lr-media-placeholder" role="img" aria-label="Emplacement de la photo : pizza Monza"><svg
+                  class="lr-picto" aria-hidden="true">
+                  <use href="#lr-picto" />
+                </svg></div>
+            </div>
+            <form class="ds-product__form" data-base-price="17" action="#fiche-produit">
+              <p class="lr-eyebrow">Pizze</p>
+              <p class="lr-h2">Pizza Monza</p>
+              <ul class="lr-badges">
+                <li class="lr-badge lr-badge--favorite"><svg class="lr-icon lr-icon--filled" aria-hidden="true">
+                    <use href="#i-heart" />
+                  </svg>Coup de cœur</li>
+              </ul>
+              <p>Crème, mozzarella, jambon, gorgonzola.</p>
+              <p class="lr-price">17,00&nbsp;€</p>
+
+              <fieldset class="lr-fieldset">
+                <legend>Retirer un ingrédient</legend>
+                <p class="lr-fieldset__hint">Gratuit.</p>
+                <div class="lr-chips">
+                  <label class="lr-chip">
+                    <input class="lr-chip__input" type="checkbox" name="retirer" value="jambon">
+                    <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                          <use href="#i-check" />
+                        </svg></span><span class="lr-chip__label">Sans jambon</span></span>
+                  </label>
+                  <label class="lr-chip">
+                    <input class="lr-chip__input" type="checkbox" name="retirer" value="gorgonzola" checked>
+                    <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                          <use href="#i-check" />
+                        </svg></span><span class="lr-chip__label">Sans gorgonzola</span></span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="lr-fieldset">
+                <legend>Suppléments</legend>
+                <div class="lr-chips lr-chips--stack">
+                  <label class="lr-chip">
+                    <input class="lr-chip__input" type="checkbox" name="supplement" value="stracciatella" data-price="3"
+                      checked>
+                    <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                          <use href="#i-check" />
+                        </svg></span><span class="lr-chip__label">Stracciatella</span><span
+                        class="lr-chip__price">+3,00&nbsp;€</span></span>
+                  </label>
+                  <label class="lr-chip">
+                    <input class="lr-chip__input" type="checkbox" name="supplement" value="parme" data-price="4">
+                    <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                          <use href="#i-check" />
+                        </svg></span><span class="lr-chip__label">Jambon de Parme 22 mois</span><span
+                        class="lr-chip__price">+4,00&nbsp;€</span></span>
+                  </label>
+                  <label class="lr-chip">
+                    <input class="lr-chip__input" type="checkbox" name="supplement" value="roquette" data-price="1.5">
+                    <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                          <use href="#i-check" />
+                        </svg></span><span class="lr-chip__label">Roquette</span><span
+                        class="lr-chip__price">+1,50&nbsp;€</span></span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div class="ds-product__buy">
+                <div class="lr-qty">
+                  <button class="lr-qty__btn" type="button" data-step="down"
+                    aria-label="Diminuer la quantité de pizza Monza"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-minus" />
+                    </svg></button>
+                  <label class="lr-visually-hidden" for="qty-monza">Quantité</label>
+                  <input class="lr-qty__input" id="qty-monza" name="quantite" type="number" min="1" max="10" step="1"
+                    value="1">
+                  <button class="lr-qty__btn" type="button" data-step="up"
+                    aria-label="Augmenter la quantité de pizza Monza"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-plus" />
+                    </svg></button>
+                </div>
+                <p class="ds-product__total">Total <output name="total" for="qty-monza">20,00&nbsp;€</output></p>
+                <button class="lr-btn lr-btn--primary" type="submit"><svg class="lr-icon" aria-hidden="true">
+                    <use href="#i-bag" />
+                  </svg>Ajouter au panier</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <h3>Choix du format (variation unique)</h3>
+        <div class="ds-demo">
+          <form action="#fiche-produit">
+            <fieldset class="lr-fieldset">
+              <legend>Burrata : format</legend>
+              <div class="lr-chips lr-chips--stack">
+                <label class="lr-chip lr-chip--radio">
+                  <input class="lr-chip__input" type="radio" name="burrata" value="100" checked>
+                  <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">100 g<span class="lr-chip__detail">Burrata
+                        seule</span></span><span class="lr-chip__price">8,00&nbsp;€</span></span>
+                </label>
+                <label class="lr-chip lr-chip--radio">
+                  <input class="lr-chip__input" type="radio" name="burrata" value="300">
+                  <span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">300 g à partager<span class="lr-chip__detail">Roquette,
+                        poivrons, tomates séchées, basilic · plus que 2</span></span><span
+                      class="lr-chip__price">23,00&nbsp;€</span></span>
+                </label>
+              </div>
+            </fieldset>
+            <p class="lr-stock lr-stock--low"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                <use href="#i-alert" />
+              </svg>Format 300 g : plus que 2 ce soir</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================== 14 FORMULAIRES ============================== -->
+      <section class="ds-section" id="formulaires" aria-labelledby="formulaires-titre">
+        <h2 id="formulaires-titre">Formulaires</h2>
+        <p class="ds-intro">L'aide est placée au-dessus du champ (le clavier mobile ne la cache pas). L'erreur s'affiche
+          seulement quand on quitte un champ mal rempli ou qu'on valide le formulaire. Tous les champs sont obligatoires
+          sauf ceux marqués « facultatif ».</p>
+
+        <h3>Coordonnées de retrait (essayez de valider vide)</h3>
+        <div class="ds-demo">
+          <form class="ds-form" data-demo action="#formulaires">
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-nom">Nom pour le retrait</label>
+              <span class="lr-field__hint" id="f-nom-aide">Le nom annoncé au comptoir.</span>
+              <input class="lr-input" id="f-nom" name="nom" type="text" autocomplete="name" required
+                aria-describedby="f-nom-aide" aria-errormessage="f-nom-erreur">
+              <p class="lr-field__error" id="f-nom-erreur"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                  <use href="#i-error" />
+                </svg>Indiquez un nom pour le retrait.</p>
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-tel">Téléphone</label>
+              <span class="lr-field__hint" id="f-tel-aide">10 chiffres, par exemple 06 12 34 56 78. Utilisé seulement en
+                cas de souci.</span>
+              <input class="lr-input" id="f-tel" name="telephone" type="tel" autocomplete="tel" required
+                pattern="0[1-9]( ?[0-9]{2}){4}" aria-describedby="f-tel-aide" aria-errormessage="f-tel-erreur">
+              <p class="lr-field__error" id="f-tel-erreur"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                  <use href="#i-error" />
+                </svg>Saisissez un numéro à 10 chiffres, par exemple 06 12 34 56 78.</p>
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-mail">Adresse e-mail</label>
+              <span class="lr-field__hint" id="f-mail-aide">Pour recevoir la confirmation et la facture.</span>
+              <input class="lr-input" id="f-mail" name="email" type="email" autocomplete="email" required
+                aria-describedby="f-mail-aide" aria-errormessage="f-mail-erreur">
+              <p class="lr-field__error" id="f-mail-erreur"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                  <use href="#i-error" />
+                </svg>Saisissez une adresse valide, par exemple nom@exemple.fr.</p>
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-couverts">Couverts et serviettes</label>
+              <select class="lr-input" id="f-couverts" name="couverts">
+                <option value="0">Non merci</option>
+                <option value="1">Oui, pour 1 personne</option>
+                <option value="2">Oui, pour 2 personnes</option>
+                <option value="4">Oui, pour 4 personnes</option>
+              </select>
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-note">Instructions pour la cuisine <span
+                  class="lr-field__optional">(facultatif)</span></label>
+              <span class="lr-field__hint" id="f-note-aide">Allergie, demande particulière. 200 caractères
+                maximum.</span>
+              <textarea class="lr-input" id="f-note" name="note" maxlength="200" rows="3"
+                aria-describedby="f-note-aide"></textarea>
+            </div>
+            <fieldset class="lr-fieldset">
+              <legend>Paiement</legend>
+              <label class="lr-check lr-check--radio">
+                <input class="lr-check__input" type="radio" name="paiement" value="retrait" checked>
+                <span class="lr-check__box" aria-hidden="true"><svg class="lr-icon">
+                    <use href="#i-check" />
+                  </svg></span>
+                <span class="lr-check__label">Au retrait<span class="lr-check__detail">Carte bancaire ou espèces au
+                    comptoir.</span></span>
+              </label>
+              <label class="lr-check lr-check--radio">
+                <input class="lr-check__input" type="radio" name="paiement" value="virement">
+                <span class="lr-check__box" aria-hidden="true"><svg class="lr-icon">
+                    <use href="#i-check" />
+                  </svg></span>
+                <span class="lr-check__label">Par virement<span class="lr-check__detail">La commande est préparée à
+                    réception du virement.</span></span>
+              </label>
+            </fieldset>
+            <label class="lr-check">
+              <input class="lr-check__input" id="f-cgv" type="checkbox" name="cgv" required
+                aria-errormessage="f-cgv-erreur">
+              <span class="lr-check__box" aria-hidden="true"><svg class="lr-icon">
+                  <use href="#i-check" />
+                </svg></span>
+              <span class="lr-check__label">J'ai lu et j'accepte les <a href="#versions">conditions générales de
+                  vente</a>.</span>
+            </label>
+            <p class="lr-field__error" id="f-cgv-erreur"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                <use href="#i-error" />
+              </svg>Acceptez les conditions générales pour commander.</p>
+            <button class="lr-btn lr-btn--primary lr-btn--lg" type="submit">Valider ma commande</button>
+            <p class="ds-status" role="status"></p>
+          </form>
+        </div>
+
+        <h3>États d'un champ</h3>
+        <div class="ds-demo">
+          <div class="ds-split">
+            <div class="lr-field">
+              <label class="lr-field__label" for="e-defaut">Code postal</label>
+              <input class="lr-input" id="e-defaut" type="text" inputmode="numeric" autocomplete="postal-code"
+                placeholder="16000">
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="e-valide">Prénom</label>
+              <input class="lr-input is-valid" id="e-valide" type="text" value="Clara">
+            </div>
+            <div class="lr-field lr-field--error">
+              <label class="lr-field__label" for="e-erreur">Téléphone</label>
+              <input class="lr-input" id="e-erreur" type="tel" value="06 12" aria-invalid="true"
+                aria-errormessage="e-erreur-msg">
+              <p class="lr-field__error" id="e-erreur-msg"><svg class="lr-icon lr-icon--sm" aria-hidden="true">
+                  <use href="#i-error" />
+                </svg>Saisissez un numéro à 10 chiffres.</p>
+            </div>
+            <div class="lr-field">
+              <label class="lr-field__label" for="e-desactive">Ville de retrait</label>
+              <input class="lr-input" id="e-desactive" type="text" value="Angoulême" disabled>
+            </div>
+          </div>
+        </div>
+
+        <h3>Champ en ligne</h3>
+        <div class="ds-demo">
+          <form action="#formulaires">
+            <div class="lr-field">
+              <label class="lr-field__label" for="f-promo">Code promo</label>
+              <div class="lr-inline-form">
+                <input class="lr-input" id="f-promo" name="code" type="text" autocomplete="off">
+                <button class="lr-btn lr-btn--secondary" type="submit">Appliquer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================== 15 CRÉNEAU DE RETRAIT ============================== -->
+      <section class="ds-section" id="retrait" aria-labelledby="retrait-titre">
+        <h2 id="retrait-titre">Créneau de retrait</h2>
+        <p class="ds-intro">Le cœur du click &amp; collect. Les créneaux suivent les vrais horaires du restaurant, par
+          quart d'heure. Un créneau complet reste visible mais désactivé, avec le mot « Complet ».</p>
+        <div class="ds-demo">
+          <form action="#retrait">
+            <fieldset class="lr-fieldset">
+              <legend>Jour</legend>
+              <div class="lr-chips">
+                <label class="lr-chip lr-chip--radio"><input class="lr-chip__input" type="radio" name="jour"
+                    value="2026-10-13" checked><span class="lr-chip__body"><span class="lr-chip__mark"
+                      aria-hidden="true"><svg class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">Mar. 13 oct.</span></span></label>
+                <label class="lr-chip lr-chip--radio"><input class="lr-chip__input" type="radio" name="jour"
+                    value="2026-10-14"><span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg
+                        class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">Mer. 14 oct.</span></span></label>
+                <label class="lr-chip lr-chip--radio"><input class="lr-chip__input" type="radio" name="jour"
+                    value="2026-10-15"><span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg
+                        class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">Jeu. 15 oct.</span></span></label>
+                <label class="lr-chip lr-chip--radio"><input class="lr-chip__input" type="radio" name="jour"
+                    value="2026-10-16"><span class="lr-chip__body"><span class="lr-chip__mark" aria-hidden="true"><svg
+                        class="lr-icon">
+                        <use href="#i-check" />
+                      </svg></span><span class="lr-chip__label">Ven. 16 oct.<span class="lr-chip__detail">Le
+                        soir</span></span></span></label>
+              </div>
+            </fieldset>
+            <fieldset class="lr-fieldset">
+              <legend>Heure, mardi 13 octobre</legend>
+              <p class="lr-fieldset__hint">Midi, de 12&nbsp;h à 14&nbsp;h</p>
+              <div class="lr-chips lr-chips--slots">
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="12:00"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="12:00">12&nbsp;h&nbsp;00</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="12:15"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="12:15">12&nbsp;h&nbsp;15</time></span></span></label>
+                <label class="lr-chip lr-chip--disabled"><input class="lr-chip__input" type="radio" name="heure" value="12:30"
+                    disabled><span class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="12:30">12&nbsp;h&nbsp;30</time></span><span
+                      class="lr-chip__detail">Complet</span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="12:45"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="12:45">12&nbsp;h&nbsp;45</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="13:00"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="13:00">13&nbsp;h&nbsp;00</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="13:15"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="13:15">13&nbsp;h&nbsp;15</time></span></span></label>
+              </div>
+              <p class="lr-fieldset__hint">Soir, de 19&nbsp;h à 22&nbsp;h&nbsp;30</p>
+              <div class="lr-chips lr-chips--slots">
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="19:00"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="19:00">19&nbsp;h&nbsp;00</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="19:15"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="19:15">19&nbsp;h&nbsp;15</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="19:30"
+                    checked><span class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="19:30">19&nbsp;h&nbsp;30</time></span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="19:45"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="19:45">19&nbsp;h&nbsp;45</time></span></span></label>
+                <label class="lr-chip lr-chip--disabled"><input class="lr-chip__input" type="radio" name="heure" value="20:00"
+                    disabled><span class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="20:00">20&nbsp;h&nbsp;00</time></span><span
+                      class="lr-chip__detail">Complet</span></span></label>
+                <label class="lr-chip"><input class="lr-chip__input" type="radio" name="heure" value="20:15"><span
+                    class="lr-chip__body"><span class="lr-chip__label"><time
+                        datetime="20:15">20&nbsp;h&nbsp;15</time></span></span></label>
+              </div>
+            </fieldset>
+            <div class="lr-pickup">
+              <svg class="lr-icon" aria-hidden="true">
+                <use href="#i-pin" />
+              </svg>
+              <p><strong>Retrait au comptoir</strong>, 3 place Francis Louvel à Angoulême. Donnez votre nom et votre
+                numéro de commande.</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ============================== 16 NOTIFICATIONS ============================== -->
+      <section class="ds-section" id="notifications" aria-labelledby="notifications-titre">
+        <h2 id="notifications-titre">Notifications</h2>
+        <p class="ds-intro">Elles correspondent aux messages WooCommerce (message, info, erreur). Quand elles
+          apparaissent sans rechargement, le conteneur porte <code>role="status"</code> (succès, info) ou
+          <code>role="alert"</code> (erreur).</p>
+        <div class="ds-demo ds-demo--bg">
+          <div class="lr-notice lr-notice--success">
+            <svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg>
+            <div class="lr-notice__content">
+              <p class="lr-notice__title">Pizza Monza ajoutée au panier.</p>
+            </div>
+            <a class="lr-notice__action" href="#panier">Voir le panier</a>
+          </div>
+          <div class="lr-notice lr-notice--info">
+            <svg class="lr-icon" aria-hidden="true">
+              <use href="#i-info" />
+            </svg>
+            <div class="lr-notice__content">
+              <p class="lr-notice__title">Commandez jusqu'à 30 minutes avant la fermeture.</p>
+              <p class="lr-notice__text">Ce soir, dernier retrait à 22&nbsp;h&nbsp;30.</p>
+            </div>
+          </div>
+          <div class="lr-notice lr-notice--warning">
+            <svg class="lr-icon" aria-hidden="true">
+              <use href="#i-alert" />
+            </svg>
+            <div class="lr-notice__content">
+              <p class="lr-notice__title">Plus que 2 burrata de 300 g ce soir.</p>
+            </div>
+          </div>
+          <div class="lr-notice lr-notice--error">
+            <svg class="lr-icon" aria-hidden="true">
+              <use href="#i-error" />
+            </svg>
+            <div class="lr-notice__content">
+              <p class="lr-notice__title">Ce créneau vient d'être réservé.</p>
+              <p class="lr-notice__text">Choisissez une autre heure pour votre retrait.</p>
+            </div>
+            <a class="lr-notice__action" href="#retrait">Changer d'heure</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 17 PANIER ============================== -->
+      <section class="ds-section" id="panier" aria-labelledby="panier-titre">
+        <h2 id="panier-titre">Panier et commande</h2>
+        <p class="ds-intro">Quatre étapes, toujours visibles. Sur mobile, seul le libellé de l'étape en cours s'affiche
+          ; les autres restent lus par les lecteurs d'écran.</p>
+
+        <h3>Étapes</h3>
+        <div class="ds-demo">
+          <ol class="lr-steps" aria-label="Étapes de la commande">
+            <li class="lr-steps__item is-done"><span class="lr-steps__num">1</span><span class="lr-steps__label">Panier<span class="lr-visually-hidden">
+                  (terminé)</span></span></li>
+            <li class="lr-steps__item" aria-current="step"><span class="lr-steps__num">2</span><span class="lr-steps__label">Retrait</span></li>
+            <li class="lr-steps__item"><span class="lr-steps__num">3</span><span class="lr-steps__label">Coordonnées</span></li>
+            <li class="lr-steps__item"><span class="lr-steps__num">4</span><span class="lr-steps__label">Confirmation</span></li>
+          </ol>
+        </div>
+
+        <h3>Panier</h3>
+        <div class="ds-demo ds-demo--bg">
+          <div class="ds-checkout">
+            <ul class="lr-cart" aria-label="Articles du panier">
+              <li class="lr-cart-line">
+                <div class="lr-cart-line__media">
+                  <div class="lr-media-placeholder"><svg class="lr-picto" aria-hidden="true">
+                      <use href="#lr-picto" />
+                    </svg></div>
+                </div>
+                <div class="lr-cart-line__info">
+                  <h4 class="lr-cart-line__title"><a href="#fiche-produit">Pizza Monza</a></h4>
+                  <ul class="lr-cart-line__options">
+                    <li>Sans gorgonzola</li>
+                    <li>Supplément stracciatella (+3,00&nbsp;€)</li>
+                  </ul>
+                </div>
+                <div class="lr-cart-line__qty lr-qty">
+                  <button class="lr-qty__btn" type="button" data-step="down"
+                    aria-label="Diminuer la quantité de pizza Monza"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-minus" />
+                    </svg></button>
+                  <label class="lr-visually-hidden" for="qty-panier-1">Quantité de pizza Monza</label>
+                  <input class="lr-qty__input" id="qty-panier-1" type="number" min="0" max="10" step="1" value="2">
+                  <button class="lr-qty__btn" type="button" data-step="up"
+                    aria-label="Augmenter la quantité de pizza Monza"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-plus" />
+                    </svg></button>
+                </div>
+                <p class="lr-price lr-cart-line__total">40,00&nbsp;€</p>
+                <button class="lr-btn lr-btn--icon lr-cart-line__remove" type="button"><svg class="lr-icon"
+                    aria-hidden="true">
+                    <use href="#i-trash" />
+                  </svg><span class="lr-visually-hidden">Retirer la pizza Monza du panier</span></button>
+              </li>
+              <li class="lr-cart-line">
+                <div class="lr-cart-line__media">
+                  <div class="lr-media-placeholder"><svg class="lr-picto" aria-hidden="true">
+                      <use href="#lr-picto" />
+                    </svg></div>
+                </div>
+                <div class="lr-cart-line__info">
+                  <h4 class="lr-cart-line__title"><a href="#cartes">Focaccia</a></h4>
+                  <ul class="lr-cart-line__options">
+                    <li>5,00&nbsp;€ l'unité</li>
+                  </ul>
+                </div>
+                <div class="lr-cart-line__qty lr-qty">
+                  <button class="lr-qty__btn" type="button" data-step="down"
+                    aria-label="Diminuer la quantité de focaccia"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-minus" />
+                    </svg></button>
+                  <label class="lr-visually-hidden" for="qty-panier-2">Quantité de focaccia</label>
+                  <input class="lr-qty__input" id="qty-panier-2" type="number" min="0" max="10" step="1" value="1">
+                  <button class="lr-qty__btn" type="button" data-step="up"
+                    aria-label="Augmenter la quantité de focaccia"><svg class="lr-icon" aria-hidden="true">
+                      <use href="#i-plus" />
+                    </svg></button>
+                </div>
+                <p class="lr-price lr-cart-line__total">5,00&nbsp;€</p>
+                <button class="lr-btn lr-btn--icon lr-cart-line__remove" type="button"><svg class="lr-icon"
+                    aria-hidden="true">
+                    <use href="#i-trash" />
+                  </svg><span class="lr-visually-hidden">Retirer la focaccia du panier</span></button>
+              </li>
+            </ul>
+
+            <aside class="lr-summary" aria-labelledby="recap-titre">
+              <h4 id="recap-titre" class="lr-h3">Récapitulatif</h4>
+              <dl class="lr-summary__rows">
+                <div>
+                  <dt>Sous-total</dt>
+                  <dd>45,00&nbsp;€</dd>
+                </div>
+                <div>
+                  <dt>Retrait en boutique</dt>
+                  <dd>Gratuit</dd>
+                </div>
+                <div class="lr-summary__total">
+                  <dt>Total TTC</dt>
+                  <dd>45,00&nbsp;€</dd>
+                </div>
+              </dl>
+              <div class="lr-pickup">
+                <svg class="lr-icon" aria-hidden="true">
+                  <use href="#i-clock" />
+                </svg>
+                <p>Retrait mardi 13 octobre à <time datetime="2026-10-13T19:30">19&nbsp;h&nbsp;30</time></p>
+              </div>
+              <a class="lr-btn lr-btn--primary lr-btn--block" href="#formulaires">Continuer</a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== 18 ACCESSIBILITÉ ============================== -->
+      <section class="ds-section" id="accessibilite" aria-labelledby="accessibilite-titre">
+        <h2 id="accessibilite-titre">Accessibilité</h2>
+        <p class="ds-intro">Objectif : WCAG 2.2 niveau AA sur toutes les pages du parcours de commande.</p>
+        <ul class="ds-checklist">
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Contrastes calculés pour chaque couple texte et fond (section Couleurs).</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Focus clavier visible partout : anneau de 2 px noir sur clair, or sur noir.</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Zones tactiles de 44 px minimum (boutons, options, quantité, liens du menu).</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Titres, menus et étiquettes en vrai texte HTML, jamais en image comme sur le site actuel.</span>
+          </li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Options produit en vrais champs radio et cases à cocher, groupés par <code>fieldset</code> et
+              <code>legend</code>.</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Erreurs affichées après saisie (<code>aria-invalid</code>), avec texte, icône et bordure,
+              pas seulement de la couleur.</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Animations coupées si l'utilisateur a activé « réduire les animations ».</span></li>
+          <li><svg class="lr-icon" aria-hidden="true">
+              <use href="#i-check" />
+            </svg><span>Tailles en rem : la page suit le zoom et la taille de texte choisie dans le navigateur.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============================== 19 VERSIONS ============================== -->
+      <section class="ds-section" id="versions" aria-labelledby="versions-titre">
+        <h2 id="versions-titre">Versions</h2>
+        <div class="ds-table-wrap">
+          <table class="ds-table">
+            <caption>Historique du Design System (à reporter dans la page Changelog de Figma)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Version</th>
+                <th scope="col">Date</th>
+                <th scope="col">Changements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1.0</th>
+                <td><time datetime="2026-10-12">12/10/2026</time></td>
+                <td>Première version : couleurs de la marque et teintes accessibles, polices libres, espacements, 18
+                  icônes, boutons, badges, navigation, cartes, fiche produit, formulaires, créneaux, notifications,
+                  panier.</td>
+              </tr>
+              <tr>
+                <th scope="row">1.1</th>
+                <td><time datetime="2026-10-15">15/10/2026</time></td>
+                <td>Alignement sur la maquette Figma V1.3 : 4 catégories dans les onglets (Antipasti, Pizze, Pasta &amp;
+                  Risotto, Dolci &amp; Gelato), libellés de paiement repris du sujet (« Au retrait », « Par virement »)
+                  et « Retrait en boutique » dans le récapitulatif. CSS organisé en couches <code>@layer</code> (tokens,
+                  base, components, utilities, documentation) dans <code>css/styles.css</code>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="ds-footer lr-surface-dark">
+    <div class="lr-container">
+      <p>Projet pédagogique SAé 3.01, BUT MMI 2, IUT du Limousin. Non affilié au restaurant Le Lion Rouge, dont la
+        charte est reprise pour l'exercice.</p>
+      <p>Polices Tenor Sans, Josefin Sans, Poppins et Allison sous licence SIL Open Font License 1.1 (<a
+          href="fonts/licences/OFL-poppins.txt">voir les licences</a>).</p>
+    </div>
+  </footer>
+</body>
+
+</html>
