@@ -214,6 +214,19 @@ add_filter( 'woocommerce_product_cross_sells_products_heading', 'lionrouge_titre
 
 /* ===== Panier, commande et e-mails ===== */
 
+// Frais de préparation si le panier est sous le seuil, montant et seuil dans « Réglages Lion Rouge » (IT-15).
+function lionrouge_frais_preparation( $panier ) {
+	if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+		return;
+	}
+	$montant = (float) get_field( 'frais_preparation_montant', 'option' );
+	$seuil   = (float) get_field( 'frais_preparation_seuil', 'option' );
+	if ( $montant > 0 && $panier->get_subtotal() < $seuil ) {
+		$panier->add_fee( 'Frais de préparation', $montant );
+	}
+}
+add_action( 'woocommerce_cart_calculate_fees', 'lionrouge_frais_preparation' );
+
 // Instructions pour le retrait pendant la commande, texte modifiable dans « Réglages Lion Rouge » (IT-6).
 function lionrouge_instructions_retrait() {
 	$instructions = get_field( 'instructions_retrait', 'option' );
