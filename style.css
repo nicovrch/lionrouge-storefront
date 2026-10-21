@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.11.0
+Version: 0.13.0
 Text Domain: lionrouge
 */
 
@@ -1176,6 +1176,79 @@ ul.products li.product .added_to_cart {
   color: var(--lr-color-danger);
 }
 
+/* ===== Avec ça ? (IT-13) ===== */
+.cross-sells > h2,
+.up-sells > h2,
+.related > h2 {
+  margin-bottom: var(--lr-space-16);
+  font-size: var(--lr-fs-h3);
+}
+
+.cross-sells ul.products,
+.up-sells ul.products {
+  gap: var(--lr-space-12);
+}
+
+.cross-sells ul.products li.product,
+.up-sells ul.products li.product {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0 var(--lr-space-12);
+}
+
+.site-main .cross-sells ul.products[class*="columns-"] li.product,
+.site-main .up-sells ul.products[class*="columns-"] li.product {
+  display: grid;
+  padding: var(--lr-space-8);
+}
+
+.cross-sells ul.products li.product .woocommerce-LoopProduct-link,
+.up-sells ul.products li.product .woocommerce-LoopProduct-link {
+  display: contents;
+}
+
+.cross-sells ul.products li.product img,
+.up-sells ul.products li.product img {
+  grid-row: 1 / span 3;
+  width: 5rem;
+  height: 5rem;
+  aspect-ratio: 1;
+}
+
+.cross-sells ul.products li.product .woocommerce-loop-product__title,
+.up-sells ul.products li.product .woocommerce-loop-product__title {
+  padding: 0;
+  font-size: var(--lr-fs-body);
+}
+
+.cross-sells ul.products li.product .lr-description,
+.cross-sells ul.products li.product .lr-infos,
+.up-sells ul.products li.product .lr-description,
+.up-sells ul.products li.product .lr-infos {
+  display: none;
+}
+
+.cross-sells ul.products li.product .price,
+.up-sells ul.products li.product .price {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: var(--lr-fs-body);
+}
+
+.cross-sells ul.products li.product .button,
+.up-sells ul.products li.product .button {
+  grid-column: 2;
+  justify-self: start;
+  max-width: none;
+  white-space: nowrap;
+  min-height: 2.5rem;
+  margin: var(--lr-space-8) 0 0;
+  padding: var(--lr-space-4) var(--lr-space-16);
+  font-size: var(--lr-fs-small);
+}
+
 /* ===== Panier (IT-5) ===== */
 .woocommerce-cart-form {
   margin-bottom: var(--lr-space-32);
@@ -2126,6 +2199,27 @@ ul.products li.product .added_to_cart {
     padding-left: var(--lr-space-32);
     padding-right: var(--lr-space-32);
     font-size: var(--lr-fs-lead);
+  }
+
+  /* Avec ça ? (IT-13) */
+  .cross-sells ul.products,
+  .up-sells ul.products {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .up-sells ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .single-product div.product .up-sells,
+  .single-product div.product .woocommerce-tabs,
+  .single-product div.product .related {
+    margin-top: var(--lr-space-24);
+  }
+
+  .cross-sells ul.products li.product img,
+  .up-sells ul.products li.product img {
+    aspect-ratio: 1;
   }
 
   /* Panier (IT-5) */
