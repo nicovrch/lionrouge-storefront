@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.9.0
+Version: 0.10.0
 Text Domain: lionrouge
 */
 
@@ -1273,6 +1273,57 @@ ul.products li.product .added_to_cart {
   text-align: left;
 }
 
+/* Code promo (IT-10) */
+.woocommerce table.cart td.actions .coupon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lr-space-8);
+  margin-bottom: var(--lr-space-16);
+}
+
+.woocommerce table.cart td.actions .coupon label {
+  display: none;
+}
+
+.woocommerce table.cart td.actions .coupon #coupon_code {
+  flex: 1 1 10rem;
+  width: auto;
+  margin: 0;
+}
+
+.woocommerce table.cart td.actions .coupon .button {
+  flex: 0 0 auto;
+}
+
+.woocommerce table.cart td.actions > .button {
+  width: 100%;
+}
+
+.woocommerce table.shop_table tbody tr:nth-child(2n) td,
+.woocommerce table.shop_table tbody tr:nth-child(2n) th {
+  background: none;
+}
+
+.woocommerce table.cart td.product-thumbnail,
+.woocommerce table.cart td.product-remove {
+  text-align: left;
+}
+
+.woocommerce table.cart td.product-remove {
+  padding-bottom: 0;
+  border-bottom: 0;
+  text-align: right;
+}
+
+.woocommerce table.cart img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.woocommerce table.shop_table_responsive tr td::before {
+  font-weight: var(--lr-fw-semibold);
+}
+
 /* ===== Totaux du panier (IT-5) ===== */
 .woocommerce .cart-collaterals {
   display: grid;
@@ -1306,6 +1357,20 @@ ul.products li.product .added_to_cart {
 
 .woocommerce .cart_totals table.shop_table td {
   text-align: right;
+}
+
+/* Réduction du code promo (IT-10) */
+.woocommerce .cart_totals tr.cart-discount td,
+.woocommerce .cart_totals tr.cart-discount th {
+  color: var(--lr-color-success);
+}
+
+.woocommerce .cart_totals tr.order-total th,
+.woocommerce .cart_totals tr.order-total td {
+  border-top: var(--lr-border-hairline) solid var(--lr-color-hairline);
+  border-bottom: 0;
+  color: var(--lr-color-heading);
+  font-weight: var(--lr-fw-semibold);
 }
 
 /* Modes de livraison (IT-5) */
