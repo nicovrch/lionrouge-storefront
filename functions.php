@@ -180,6 +180,20 @@ function lionrouge_prix_a_partir_de( $prix, $produit ) {
 }
 add_filter( 'woocommerce_variable_price_html', 'lionrouge_prix_a_partir_de', 10, 2 );
 
+// Champs SCF « Allergènes » et « Provenance », sur la carte et la fiche produit (IT-4).
+function lionrouge_infos_plat() {
+	$allergenes = get_field( 'allergenes' );
+	$provenance = get_field( 'provenance' );
+	if ( $allergenes ) {
+		echo '<p class="lr-infos"><strong>Allergènes :</strong> ' . esc_html( $allergenes ) . '</p>';
+	}
+	if ( $provenance && is_product() ) {
+		echo '<p class="lr-infos"><strong>Provenance :</strong> ' . esc_html( $provenance ) . '</p>';
+	}
+}
+add_action( 'woocommerce_single_product_summary', 'lionrouge_infos_plat', 22 );
+add_action( 'woocommerce_after_shop_loop_item_title', 'lionrouge_infos_plat', 8 );
+
 /* ===== Fiche produit ===== */
 
 // Fiche produit : prix déplacé après la description (IT-2), donc après les allergènes (IT-4).

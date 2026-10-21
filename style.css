@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.3.1
+Version: 0.4.0
 Text Domain: lionrouge
 */
 
@@ -758,6 +758,26 @@ ul.products li.product .added_to_cart {
   font-size: var(--lr-fs-small);
   font-weight: var(--lr-fw-semibold);
   text-decoration: underline;
+}
+
+/* ===== Allergènes et provenance (IT-4) ===== */
+.lr-infos {
+  margin: 0;
+  padding: 0 var(--lr-space-16) var(--lr-space-4);
+  color: var(--lr-color-text-muted);
+  font-size: var(--lr-fs-xs);
+  line-height: 1.5;
+}
+
+.lr-infos strong {
+  color: var(--lr-color-heading);
+  font-weight: var(--lr-fw-semibold);
+}
+
+.single-product div.product .lr-infos {
+  margin: 0 0 var(--lr-space-8);
+  padding: 0;
+  font-size: var(--lr-fs-small);
 }
 
 /* ===== Fiche produit (IT-2) ===== */
