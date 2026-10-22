@@ -256,3 +256,42 @@ function lionrouge_retirer_colonne_laterale() {
 	remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
 }
 add_action( 'wp', 'lionrouge_retirer_colonne_laterale' );
+
+/* ===== Livraison selon le poids ===== */
+
+// Tarif de la livraison à domicile selon le poids du panier : 3 tranches réglées dans « Réglages Lion Rouge » (IT-19).
+function lionrouge_livraison_poids( $tarifs ) {
+	$poids = WC()->cart->get_cart_contents_weight();
+	$prix  = get_field( 'livraison_tarif_3', 'option' );
+	if ( $poids <= get_field( 'livraison_seuil_2', 'option' ) ) {
+		$prix = get_field( 'livraison_tarif_2', 'option' );
+	}
+	if ( $poids <= get_field( 'livraison_seuil_1', 'option' ) ) {
+		$prix = get_field( 'livraison_tarif_1', 'option' );
+	}
+	foreach ( $tarifs as $tarif ) {
+		if ( $tarif->get_method_id() === 'flat_rate' ) {
+			$tarif->set_cost( $prix );
+		}
+	}
+	return $tarifs;
+}
+add_filter( 'woocommerce_package_rates', 'lionrouge_livraison_poids' );
+
+// Poids du panier et rappel des 3 tranches, sous le mode de livraison du panier et de la commande (IT-19).
+function lionrouge_poids_panier() {
+	$tranches = 'Livraison : jusqu’à ' . get_field( 'livraison_seuil_1', 'option' ) . ' kg ' . wc_price( get_field( 'livraison_tarif_1', 'option' ) )
+		. ', jusqu’à ' . get_field( 'livraison_seuil_2', 'option' ) . ' kg ' . wc_price( get_field( 'livraison_tarif_2', 'option' ) )
+		. ', au-delà ' . wc_price( get_field( 'livraison_tarif_3', 'option' ) ) . '.';
+	?>
+	<tr class="lr-poids">
+		<th>Poids</th>
+		<td>
+			<?php echo esc_html( wc_format_weight( WC()->cart->get_cart_contents_weight() ) ); ?>
+			<p class="lr-poids__tranches"><?php echo wp_kses_post( $tranches ); ?></p>
+		</td>
+	</tr>
+	<?php
+}
+add_action( 'woocommerce_cart_totals_after_shipping', 'lionrouge_poids_panier' );
+add_action( 'woocommerce_review_order_after_shipping', 'lionrouge_poids_panier' );
