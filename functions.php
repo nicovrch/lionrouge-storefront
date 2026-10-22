@@ -11,12 +11,6 @@ function lionrouge_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'lionrouge_enqueue_styles' );
 
-// Retire la police Google de Storefront : le thème utilise les polices du Design System (IT-2).
-function lionrouge_retirer_polices_storefront() {
-	wp_dequeue_style( 'storefront-fonts' );
-}
-add_action( 'wp_enqueue_scripts', 'lionrouge_retirer_polices_storefront', 20 );
-
 // Retire des éléments de Storefront et WooCommerce absents de la maquette (IT-2).
 // Lancé sur le hook « wp » : le functions.php du thème enfant est lu avant celui de Storefront.
 function lionrouge_retirer_hooks() {
@@ -45,15 +39,6 @@ function lionrouge_retirer_hooks() {
 add_action( 'wp', 'lionrouge_retirer_hooks' );
 
 /* ===== En-tête et pied de page ===== */
-
-// Garde « La carte » actif dans le menu sur les pages de catégorie et de produit (IT-2).
-function lionrouge_menu_la_carte( $classes, $item ) {
-	if ( ( is_product_category() || is_product() ) && $item->object_id == wc_get_page_id( 'shop' ) ) {
-		$classes[] = 'current-menu-item';
-	}
-	return $classes;
-}
-add_filter( 'nav_menu_css_class', 'lionrouge_menu_la_carte', 10, 2 );
 
 // En-tête : logo du restaurant à la place du titre du site (IT-2).
 function lionrouge_logo() {
@@ -216,9 +201,6 @@ add_filter( 'woocommerce_product_cross_sells_products_heading', 'lionrouge_titre
 
 // Frais de préparation si le panier est sous le seuil, montant et seuil dans « Réglages Lion Rouge » (IT-15).
 function lionrouge_frais_preparation( $panier ) {
-	if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
-		return;
-	}
 	$montant = (float) get_field( 'frais_preparation_montant', 'option' );
 	$seuil   = (float) get_field( 'frais_preparation_seuil', 'option' );
 	if ( $montant > 0 && $panier->get_subtotal() < $seuil ) {

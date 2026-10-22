@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.15.0
+Version: 0.15.1
 Text Domain: lionrouge
 */
 
@@ -88,8 +88,8 @@ Text Domain: lionrouge
   --lr-burgundy-300: #E8838F;
   --lr-green-300: #A9BBA8;
 
-  --lr-gradient-gold: radial-gradient(circle, #F0CD7D 0%, #B79A56 100%);
-  --lr-gradient-gold-hover: radial-gradient(circle, #F5DA9C 0%, #C39C51 100%);
+  --lr-gradient-gold: linear-gradient(90deg, #B79A56 0%, #F0CD7D 50%, #B79A56 100%);
+  --lr-gradient-gold-hover: linear-gradient(90deg, #C39C51 0%, #F5DA9C 50%, #C39C51 100%);
   --lr-gradient-picto: linear-gradient(90deg, #C39C51 0%, #F0CD7D 50%, #C39C51 100%);
 
   --lr-color-bg: var(--lr-cream);
@@ -162,8 +162,8 @@ Text Domain: lionrouge
   --lr-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.08), 0 6px 16px rgba(0, 0, 0, 0.06);
   --lr-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.1), 0 12px 32px rgba(0, 0, 0, 0.12);
 
-  --lr-duration-fast: 120ms;
-  --lr-duration-base: 200ms;
+  --lr-duration-fast: 0.12s;
+  --lr-duration-base: 0.2s;
   --lr-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -229,20 +229,6 @@ h3 {
 a {
   color: var(--lr-color-accent);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-a:focus,
-button:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline-color: var(--lr-color-focus);
 }
 
 ::selection {
@@ -354,7 +340,6 @@ select:focus {
   min-height: 0;
   height: 1.25rem;
   margin: 0;
-  accent-color: var(--lr-black);
 }
 
 .woocommerce form .form-row.woocommerce-invalid input.input-text,
@@ -529,7 +514,7 @@ select:focus {
   transform: translateX(-50%);
 }
 
-.site-header .lr-logo {
+.lr-logo {
   display: block;
   line-height: 0;
 }
@@ -622,12 +607,13 @@ select:focus {
   text-transform: uppercase;
 }
 
-.site-header .handheld-navigation ul.menu li.current-menu-item > a {
+.site-header .handheld-navigation ul.menu li.current-menu-item > a,
+.site-header .handheld-navigation ul.menu li.current_page_parent > a {
   color: var(--lr-gold-200);
   font-weight: var(--lr-fw-semibold);
 }
 
-.site-header .lr-compte {
+.lr-compte {
   display: none;
   align-items: center;
   justify-content: center;
@@ -637,7 +623,7 @@ select:focus {
   text-decoration: none;
 }
 
-.site-header .lr-compte:hover,
+.lr-compte:hover,
 .site-header .site-header-cart .cart-contents:hover {
   color: var(--lr-cream);
 }
@@ -691,9 +677,11 @@ select:focus {
   width: 1px;
   height: 1px;
   margin: -1px;
+  padding: 0;
   overflow: hidden;
-  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  border: 0;
 }
 
 .site-header .site-header-cart .cart-contents .count {
@@ -889,7 +877,7 @@ ul.products li.product .woocommerce-loop-product__title {
   text-transform: uppercase;
 }
 
-ul.products li.product .lr-description {
+.lr-description {
   padding: var(--lr-space-8) var(--lr-space-16) var(--lr-space-16);
   color: var(--lr-color-text-muted);
   font-size: var(--lr-fs-small);
@@ -907,7 +895,6 @@ ul.products li.product .price {
   color: var(--lr-color-heading);
   font-size: var(--lr-fs-lead);
   font-weight: var(--lr-fw-semibold);
-  font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
 
@@ -1022,7 +1009,6 @@ ul.products li.product .added_to_cart {
   color: var(--lr-color-heading);
   font-size: var(--lr-fs-lead);
   font-weight: var(--lr-fw-semibold);
-  font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
 
@@ -1191,17 +1177,12 @@ ul.products li.product .added_to_cart {
 }
 
 .woocommerce .star-rating span::before,
-.single-product p.stars a::before,
-.single-product p.stars a:hover ~ a::before {
+.single-product p.stars a::before {
   color: var(--lr-gold-500);
 }
 
 ul.products li.product .star-rating {
   margin: var(--lr-space-4) var(--lr-space-16) 0;
-}
-
-.single-product p.stars a::before {
-  color: var(--lr-gold-500);
 }
 
 .single-product #review_form,
@@ -1431,10 +1412,6 @@ ul.products li.product .star-rating {
   text-transform: uppercase;
 }
 
-.woocommerce table.shop_table .amount {
-  font-variant-numeric: tabular-nums;
-}
-
 .woocommerce table.cart img {
   width: 5rem;
   height: 5rem;
@@ -1625,7 +1602,6 @@ ul.products li.product .star-rating {
 .woocommerce ul#shipping_method input[type="radio"],
 .woocommerce .payment_methods input[type="radio"] {
   margin-right: var(--lr-space-8);
-  accent-color: var(--lr-black);
 }
 
 .woocommerce .wc-proceed-to-checkout {
@@ -1693,20 +1669,6 @@ ul.products li.product .star-rating {
   width: 1.25rem;
   min-height: 0;
   height: 1.25rem;
-  accent-color: var(--lr-black);
-}
-
-.woocommerce-checkout #payment .payment_methods li.wc_payment_method > input[type="radio"]:first-child {
-  position: static;
-  width: 1.25rem;
-  height: 1.25rem;
-  min-height: 0;
-  margin: 0 var(--lr-space-8) 0 0;
-  overflow: visible;
-  clip: auto;
-  clip-path: none;
-  vertical-align: middle;
-  accent-color: var(--lr-black);
 }
 
 #payment .payment_methods > li.wc_payment_method > label {
@@ -1714,8 +1676,9 @@ ul.products li.product .star-rating {
   padding: 0;
 }
 
-.woocommerce-checkout #payment ul.payment_methods li label::before {
-  display: none;
+.woocommerce-checkout #payment .payment_methods li.wc_payment_method > label::before,
+.woocommerce-checkout #payment .payment_methods li.wc_payment_method > input[type="radio"]:first-child:checked + label::before {
+  color: var(--lr-black);
 }
 
 .woocommerce-checkout #order_review,
@@ -2035,7 +1998,7 @@ ul.products li.product .star-rating {
   font-size: 2rem;
   letter-spacing: var(--lr-ls-display);
   line-height: 1;
-  text-indent: 0.12em;
+  padding-left: 0.12em;
   transition: background-image var(--lr-duration-base) var(--lr-ease);
 }
 
@@ -2056,7 +2019,6 @@ ul.products li.product .star-rating {
 
 .lr-membre__lien:hover .lr-membre__nom {
   text-decoration: underline;
-  text-underline-offset: 0.2em;
 }
 
 .lr-membre__poste {
@@ -2226,7 +2188,7 @@ ul.products li.product .star-rating {
 @media (min-width: 768px) {
   /* En-tête */
   .site-header .col-full .site-branding {
-    left: max(var(--lr-gutter), calc((100% - var(--lr-container)) / 2));
+    left: var(--lr-gutter);
     height: 5rem;
     transform: none;
   }
@@ -2268,13 +2230,14 @@ ul.products li.product .star-rating {
     color: var(--lr-gold-200);
   }
 
-  .site-header .main-navigation ul.menu > li.current-menu-item > a {
+  .site-header .main-navigation ul.menu > li.current-menu-item > a,
+  .site-header .main-navigation ul.menu > li.current_page_parent > a {
     border-bottom-color: var(--lr-gold-200);
     color: var(--lr-gold-200);
     font-weight: var(--lr-fw-semibold);
   }
 
-  .site-header .lr-compte {
+  .lr-compte {
     display: inline-flex;
     margin-right: var(--lr-space-4);
   }
@@ -2518,5 +2481,13 @@ ul.products li.product .star-rating {
   /* Pied de page */
   .lr-footer__inner {
     grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ===== Grand écran à partir de 1216px ===== */
+@media (min-width: 1216px) {
+  /* En-tête : logo aligné sur le contenu (IT-2) */
+  .site-header .col-full .site-branding {
+    left: calc((100% - var(--lr-container)) / 2);
   }
 }
