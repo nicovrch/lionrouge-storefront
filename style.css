@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.15.1
+Version: 0.16.0
 Text Domain: lionrouge
 */
 
@@ -2088,6 +2088,202 @@ ul.products li.product .star-rating {
   margin: 0 0 var(--lr-space-16);
 }
 
+/* ===== Accueil (IT-16) ===== */
+.home #masthead {
+  margin-bottom: 0;
+}
+
+.home .site-content {
+  background-color: var(--lr-black);
+}
+
+.home .content-area {
+  float: none;
+  width: 100%;
+  margin: 0;
+}
+
+.home #secondary {
+  display: none;
+}
+
+.lr-accueil {
+  --lr-color-bg-raised: var(--lr-black-soft);
+  --lr-color-text: var(--lr-cream);
+  --lr-color-text-muted: var(--lr-grey-300);
+  --lr-color-heading: var(--lr-gold-200);
+  --lr-color-hairline: var(--lr-gold-400);
+  --lr-color-divider: var(--lr-ink);
+  color: var(--lr-color-text);
+}
+
+/* Accroche */
+.lr-accroche {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lr-space-24);
+  padding-bottom: var(--lr-space-48);
+}
+
+.lr-accroche__image {
+  display: block;
+  width: calc(100% + 2 * var(--lr-gutter));
+  max-width: none;
+  height: auto;
+  margin: 0 calc(-1 * var(--lr-gutter));
+}
+
+.lr-accroche__script {
+  margin: 0;
+  color: var(--lr-color-heading);
+  font-family: var(--lr-font-script);
+  font-size: var(--lr-fs-script);
+  line-height: 1;
+}
+
+.lr-accroche__titre {
+  margin: 0 0 var(--lr-space-16);
+  font-size: var(--lr-fs-display);
+  line-height: var(--lr-lh-tight);
+}
+
+.lr-accroche__intro {
+  margin: 0 0 var(--lr-space-24);
+  font-size: var(--lr-fs-lead);
+}
+
+.lr-accroche__boutons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lr-space-12);
+}
+
+.lr-bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: var(--lr-space-8) var(--lr-space-24);
+  border: var(--lr-border-hairline) solid var(--lr-gold-200);
+  font-family: var(--lr-font-display);
+  font-size: var(--lr-fs-body);
+  letter-spacing: var(--lr-ls-display);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color var(--lr-duration-base) var(--lr-ease);
+}
+
+.lr-bouton--or {
+  border-color: var(--lr-gold-500);
+  background-color: var(--lr-gold-500);
+  background-image: var(--lr-gradient-gold);
+  color: var(--lr-black);
+}
+
+.lr-bouton--or:hover {
+  background-image: var(--lr-gradient-gold-hover);
+  color: var(--lr-black);
+}
+
+.lr-bouton--contour {
+  display: none;
+  color: var(--lr-gold-200);
+}
+
+.lr-bouton--contour:hover {
+  background-color: var(--lr-gold-200);
+  color: var(--lr-black);
+}
+
+/* Derniers ajouts : les 3 derniers produits du catalogue */
+.lr-ajouts {
+  padding-bottom: var(--lr-space-48);
+}
+
+.lr-ajouts__titre {
+  margin: 0 0 var(--lr-space-8);
+}
+
+.lr-ajouts__liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lr-ajout__lien {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: var(--lr-space-4) var(--lr-space-16);
+  padding: var(--lr-space-16) 0;
+  border-bottom: var(--lr-border-hairline) solid var(--lr-color-divider);
+  color: var(--lr-color-text);
+  text-decoration: none;
+}
+
+.lr-ajout__image {
+  grid-row: 1 / span 2;
+  width: 5.5rem;
+  height: 4rem;
+  border: var(--lr-border-hairline) solid var(--lr-color-hairline);
+  object-fit: cover;
+}
+
+.lr-ajout__nom {
+  align-self: end;
+  color: var(--lr-color-heading);
+  font-family: var(--lr-font-display);
+  font-size: var(--lr-fs-h3);
+  letter-spacing: 0.06em;
+  line-height: var(--lr-lh-heading);
+  text-transform: uppercase;
+}
+
+.lr-ajout__lien:hover .lr-ajout__nom {
+  text-decoration: underline;
+}
+
+.lr-ajout__prix {
+  align-self: start;
+  color: var(--lr-color-heading);
+  font-weight: var(--lr-fw-semibold);
+}
+
+/* Infos pratiques */
+.lr-pratique {
+  padding-bottom: var(--lr-space-48);
+}
+
+.lr-pratique__titre {
+  margin: 0 0 var(--lr-space-24);
+}
+
+.lr-pratique__liste {
+  display: grid;
+  gap: var(--lr-space-12);
+  margin: 0;
+  padding: var(--lr-space-16) var(--lr-space-24);
+  border: var(--lr-border-hairline) solid var(--lr-color-hairline);
+  background-color: var(--lr-color-bg-raised);
+  list-style: none;
+  font-size: var(--lr-fs-small);
+}
+
+.lr-pratique__ligne {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--lr-space-12);
+}
+
+.lr-pratique__icone {
+  flex: none;
+  color: var(--lr-color-heading);
+}
+
+.lr-pratique__lien {
+  color: var(--lr-color-text);
+}
+
 /* ===== Pied de page (IT-2) ===== */
 .site-footer {
   padding: 0;
@@ -2476,6 +2672,41 @@ ul.products li.product .star-rating {
     height: 10rem;
     margin-bottom: 0;
     font-size: 3.25rem;
+  }
+
+  /* Accueil (IT-16) */
+  .lr-accroche {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--lr-space-64);
+    padding: var(--lr-space-64) 0;
+  }
+
+  .lr-accroche__image {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .lr-accroche__texte {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .lr-accroche__boutons {
+    align-items: flex-start;
+  }
+
+  .lr-bouton--contour {
+    display: inline-flex;
+  }
+
+  .lr-ajouts__liste {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 var(--lr-space-32);
   }
 
   /* Pied de page */
