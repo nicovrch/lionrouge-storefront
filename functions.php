@@ -236,3 +236,23 @@ function lionrouge_instructions_email( $commande, $pour_admin, $texte_brut ) {
 	}
 }
 add_action( 'woocommerce_email_after_order_table', 'lionrouge_instructions_email', 10, 3 );
+
+/* ===== Recherche et filtrage ===== */
+
+// Filtres prix et taille de la colonne latérale, affichés au-dessus de la grille de produits (IT-18).
+function lionrouge_filtres() {
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		echo '<aside class="lr-filtres" aria-label="Filtrer les plats">';
+		echo '<h2 class="lr-filtres__titre">Filtrer</h2>';
+		dynamic_sidebar( 'sidebar-1' );
+		echo '</aside>';
+	}
+}
+add_action( 'woocommerce_before_shop_loop', 'lionrouge_filtres', 6 );
+add_action( 'woocommerce_no_products_found', 'lionrouge_filtres', 5 );
+
+// La colonne latérale de Storefront n'est plus affichée : ses widgets sont repris par lionrouge_filtres() (IT-18).
+function lionrouge_retirer_colonne_laterale() {
+	remove_action( 'storefront_sidebar', 'storefront_get_sidebar', 10 );
+}
+add_action( 'wp', 'lionrouge_retirer_colonne_laterale' );
