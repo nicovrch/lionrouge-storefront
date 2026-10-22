@@ -3,7 +3,7 @@ Theme Name: Le Lion Rouge
 Template: storefront
 Description: Thème enfant de Storefront pour le click & collect du Lion Rouge (SAÉ 3.01).
 Author: Nicolas Varachaud
-Version: 0.19.0
+Version: 0.20.0
 Text Domain: lionrouge
 */
 
@@ -1829,6 +1829,88 @@ ul.products li.product .star-rating {
 
 .lr-retrait p {
   margin: 0;
+}
+
+/* Créneaux de livraison et de retrait (IT-20) */
+.woocommerce-checkout table.woocommerce-checkout-review-order-table .lr-creneaux td {
+  padding-top: var(--lr-space-16);
+  text-align: left;
+}
+
+.lr-creneaux__titre {
+  margin: 0 0 var(--lr-space-12);
+  font-family: var(--lr-font-label);
+  font-size: var(--lr-fs-small);
+  font-weight: var(--lr-fw-semibold);
+  letter-spacing: var(--lr-ls-label);
+}
+
+.lr-creneaux__groupe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--lr-space-8);
+  margin: 0 0 var(--lr-space-16);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.lr-creneaux__legende {
+  width: 100%;
+  margin: 0 0 var(--lr-space-8);
+  padding: 0;
+  color: var(--lr-color-text-muted);
+  font-size: var(--lr-fs-small);
+  font-weight: var(--lr-fw-regular);
+  background-color: transparent;
+}
+
+.lr-creneau {
+  position: relative;
+}
+
+.lr-creneau__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lr-creneau__texte {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--lr-size-target);
+  padding: var(--lr-space-8) var(--lr-space-12);
+  border: var(--lr-border-hairline) solid var(--lr-color-border);
+  background-color: var(--lr-color-bg-raised);
+  color: var(--lr-color-heading);
+  font-size: var(--lr-fs-small);
+  font-weight: var(--lr-fw-semibold);
+  cursor: pointer;
+}
+
+.lr-creneau__texte:hover {
+  border-color: var(--lr-color-heading);
+}
+
+.lr-creneau__input:checked + .lr-creneau__texte {
+  border-color: var(--lr-black);
+  background-color: var(--lr-black);
+  color: var(--lr-white);
+}
+
+.lr-creneau__input:focus + .lr-creneau__texte {
+  outline: var(--lr-border-strong) solid var(--lr-color-focus);
+  outline-offset: 2px;
+}
+
+.lr-creneau-choisi {
+  margin: 0 0 var(--lr-space-24);
 }
 
 /* Moyens de paiement (IT-5) */

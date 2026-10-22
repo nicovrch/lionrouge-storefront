@@ -295,3 +295,122 @@ function lionrouge_poids_panier() {
 }
 add_action( 'woocommerce_cart_totals_after_shipping', 'lionrouge_poids_panier' );
 add_action( 'woocommerce_review_order_after_shipping', 'lionrouge_poids_panier' );
+
+/* ===== Créneaux de livraison et de retrait ===== */
+
+// Horaires proposés : heures de retrait au comptoir, plages horaires pour la livraison (IT-20).
+function lionrouge_horaires( $retrait ) {
+	if ( $retrait ) {
+		return array( '12:00', '12:30', '13:00', '13:30', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00' );
+	}
+	return array( '12:00-13:00', '13:00-14:00', '19:30-20:30', '20:30-21:30', '21:30-22:30' );
+}
+
+// Texte d'un horaire : « 19 h 30 » ou « 19 h 30 à 20 h 30 » (IT-20).
+function lionrouge_texte_horaire( $horaire ) {
+	return str_replace( array( ':', '-' ), array( ' h ', ' à ' ), $horaire );
+}
+
+// Choix du jour et de l'horaire dans le récapitulatif de la commande, selon le mode choisi : retrait ou livraison (IT-20).
+function lionrouge_choix_creneau() {
+	$modes   = WC()->session->get( 'chosen_shipping_methods' );
+	$retrait = ! empty( $modes ) && strpos( $modes[0], 'local_pickup' ) === 0;
+
+	// Quand WooCommerce recharge le récapitulatif, il renvoie le formulaire : on garde le choix déjà fait.
+	$saisie = array();
+	if ( isset( $_POST['post_data'] ) ) {
+		parse_str( wp_unslash( $_POST['post_data'] ), $saisie );
+	}
+	$jour_choisi    = '';
+	$horaire_choisi = '';
+	if ( isset( $saisie['lr_jour'] ) ) {
+		$jour_choisi = $saisie['lr_jour'];
+	}
+	if ( isset( $saisie['lr_horaire'] ) ) {
+		$horaire_choisi = $saisie['lr_horaire'];
+	}
+
+	$titre   = 'Créneau de livraison';
+	$legende = 'Plage horaire de livraison';
+	if ( $retrait ) {
+		$titre   = 'Créneau de retrait';
+		$legende = 'Heure de retrait';
+	}
+	?>
+	<tr class="lr-creneaux">
+		<td colspan="2">
+		<h3 class="lr-creneaux__titre"><?php echo esc_html( $titre ); ?></h3>
+		<fieldset class="lr-creneaux__groupe">
+			<legend class="lr-creneaux__legende">Jour</legend>
+			<?php
+			// Les 5 prochains jours d'ouverture : le restaurant est fermé le dimanche (7) et le lundi (1).
+			$nombre = 0;
+			$i      = 1;
+			while ( $nombre < 5 ) {
+				$jour = strtotime( '+' . $i . ' day', current_time( 'timestamp' ) );
+				$i++;
+				if ( date( 'N', $jour ) == 7 || date( 'N', $jour ) == 1 ) {
+					continue;
+				}
+				$nombre++;
+				$valeur = date( 'Y-m-d', $jour );
+				?>
+				<label class="lr-creneau">
+					<input class="lr-creneau__input" type="radio" name="lr_jour" value="<?php echo esc_attr( $valeur ); ?>"<?php checked( $jour_choisi, $valeur ); ?>>
+					<span class="lr-creneau__texte"><?php echo esc_html( date_i18n( 'D j F', $jour ) ); ?></span>
+				</label>
+				<?php
+			}
+			?>
+		</fieldset>
+		<fieldset class="lr-creneaux__groupe">
+			<legend class="lr-creneaux__legende"><?php echo esc_html( $legende ); ?></legend>
+			<?php foreach ( lionrouge_horaires( $retrait ) as $horaire ) : ?>
+				<label class="lr-creneau">
+					<input class="lr-creneau__input" type="radio" name="lr_horaire" value="<?php echo esc_attr( $horaire ); ?>"<?php checked( $horaire_choisi, $horaire ); ?>>
+					<span class="lr-creneau__texte"><?php echo esc_html( lionrouge_texte_horaire( $horaire ) ); ?></span>
+				</label>
+			<?php endforeach; ?>
+		</fieldset>
+		</td>
+	</tr>
+	<?php
+}
+add_action( 'woocommerce_review_order_after_shipping', 'lionrouge_choix_creneau', 20 );
+
+// La commande est refusée si le jour ou l'horaire manque, ou si l'horaire ne correspond pas au mode choisi (IT-20).
+function lionrouge_verifier_creneau() {
+	$retrait = isset( $_POST['shipping_method'][0] ) && strpos( $_POST['shipping_method'][0], 'local_pickup' ) === 0;
+	if ( empty( $_POST['lr_jour'] ) ) {
+		wc_add_notice( 'Choisissez un jour pour votre commande.', 'error' );
+	}
+	if ( empty( $_POST['lr_horaire'] ) || ! in_array( $_POST['lr_horaire'], lionrouge_horaires( $retrait ), true ) ) {
+		wc_add_notice( 'Choisissez un horaire pour votre commande.', 'error' );
+	}
+}
+add_action( 'woocommerce_checkout_process', 'lionrouge_verifier_creneau' );
+
+// Le créneau est enregistré dans la commande, en toutes lettres (IT-20).
+function lionrouge_enregistrer_creneau( $commande ) {
+	$jour    = sanitize_text_field( wp_unslash( $_POST['lr_jour'] ) );
+	$horaire = sanitize_text_field( wp_unslash( $_POST['lr_horaire'] ) );
+	$texte   = date_i18n( 'l j F', strtotime( $jour ) );
+	if ( $commande->has_shipping_method( 'local_pickup' ) ) {
+		$texte = 'Retrait le ' . $texte . ' à ' . lionrouge_texte_horaire( $horaire );
+	} else {
+		$texte = 'Livraison le ' . $texte . ' de ' . lionrouge_texte_horaire( $horaire );
+	}
+	$commande->update_meta_data( 'lr_creneau', $texte );
+}
+add_action( 'woocommerce_checkout_create_order', 'lionrouge_enregistrer_creneau' );
+
+// Créneau affiché sur la confirmation, le détail de la commande dans Mon compte et les e-mails (IT-20).
+function lionrouge_afficher_creneau( $commande ) {
+	$creneau = $commande->get_meta( 'lr_creneau' );
+	if ( $creneau ) {
+		echo '<p class="lr-creneau-choisi"><strong>Créneau :</strong> ' . esc_html( $creneau ) . '</p>';
+	}
+}
+add_action( 'woocommerce_order_details_after_order_table', 'lionrouge_afficher_creneau' );
+add_action( 'woocommerce_email_after_order_table', 'lionrouge_afficher_creneau', 5 );
+add_action( 'woocommerce_admin_order_data_after_shipping_address', 'lionrouge_afficher_creneau' );
