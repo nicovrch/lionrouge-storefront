@@ -2,15 +2,6 @@
 
 /* ===== Général ===== */
 
-// Chargement du style du thème parent Storefront (IT-1).
-function lionrouge_enqueue_styles() {
-	wp_enqueue_style(
-		'storefront-parent-style',
-		get_parent_theme_file_uri( 'style.css' )
-	);
-}
-add_action( 'wp_enqueue_scripts', 'lionrouge_enqueue_styles' );
-
 // Retire des éléments de Storefront et WooCommerce absents de la maquette (IT-2).
 // Lancé sur le hook « wp » : le functions.php du thème enfant est lu avant celui de Storefront.
 function lionrouge_retirer_hooks() {
@@ -414,3 +405,11 @@ function lionrouge_afficher_creneau( $commande ) {
 add_action( 'woocommerce_order_details_after_order_table', 'lionrouge_afficher_creneau' );
 add_action( 'woocommerce_email_after_order_table', 'lionrouge_afficher_creneau', 5 );
 add_action( 'woocommerce_admin_order_data_after_shipping_address', 'lionrouge_afficher_creneau' );
+
+/* ===== Performances (Lighthouse) ===== */
+
+// Retire la police Google de Storefront, le thème a ses propres polices (Lighthouse).
+function lionrouge_retirer_police_google() {
+	wp_dequeue_style( 'storefront-fonts' );
+}
+add_action( 'wp_enqueue_scripts', 'lionrouge_retirer_police_google', 20 );

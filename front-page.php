@@ -5,7 +5,7 @@ get_header();
 <div id="primary" class="content-area lr-accueil">
 	<main id="main" class="site-main">
 		<section class="lr-accroche">
-			<img class="lr-accroche__image" src="<?php echo esc_url( get_theme_file_uri( 'img/salle-lion-rouge.jpg' ) ); ?>" alt="La salle du restaurant Le Lion Rouge" width="568" height="426">
+			<img class="lr-accroche__image" src="<?php echo esc_url( get_theme_file_uri( 'img/salle-lion-rouge.webp' ) ); ?>" alt="La salle du restaurant Le Lion Rouge" width="568" height="426">
 			<div class="lr-accroche__texte">
 				<p class="lr-accroche__script">Buon appetito !</p>
 				<h1 class="lr-accroche__titre">Le Lion Rouge</h1>
