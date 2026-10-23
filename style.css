@@ -2687,8 +2687,7 @@ ul.products li.product .star-rating {
 
   /* Filtres de la carte à gauche de la grille (IT-18) */
   .post-type-archive-product .site-main,
-  .tax-product_cat .site-main,
-  .tax-collection .site-main {
+  .tax-product_cat .site-main {
     display: grid;
     grid-template-columns: 15rem minmax(0, 1fr);
     gap: 0 var(--lr-space-32);
